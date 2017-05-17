@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1510" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="SnapWindowController" customModule="WebcamSnap" customModuleProvider="target">
+            <connections>
+                <outlet property="previewView" destination="pqd-cQ-u89" id="Kmj-D0-HB0"/>
+                <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="F0z-JX-Cv5">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+            <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
+                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="pqd-cQ-u89">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                    </customView>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Qhc-tf-TMV">
+                        <rect key="frame" x="182" y="13" width="115" height="32"/>
+                        <buttonCell key="cell" type="push" title="Take Picture" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ypd-Rw-mHw">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="snap:" target="-2" id="frE-4s-t7e"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OV8-1H-ktL">
+                        <rect key="frame" x="104" y="13" width="82" height="32"/>
+                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cmE-WO-VvG">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="cancel:" target="-2" id="fZn-fb-KjJ"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="pqd-cQ-u89" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" id="0UK-TO-ZfK"/>
+                    <constraint firstItem="OV8-1H-ktL" firstAttribute="centerY" secondItem="Qhc-tf-TMV" secondAttribute="centerY" id="CXM-in-7Qy"/>
+                    <constraint firstItem="pqd-cQ-u89" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" id="FCx-QO-n6w"/>
+                    <constraint firstItem="Qhc-tf-TMV" firstAttribute="centerX" secondItem="se5-gp-TjO" secondAttribute="centerX" id="GpA-ox-P62"/>
+                    <constraint firstAttribute="trailing" secondItem="pqd-cQ-u89" secondAttribute="trailing" id="MSr-P7-Etb"/>
+                    <constraint firstAttribute="bottom" secondItem="pqd-cQ-u89" secondAttribute="bottom" id="P2N-tF-VBd"/>
+                    <constraint firstItem="Qhc-tf-TMV" firstAttribute="leading" secondItem="OV8-1H-ktL" secondAttribute="trailing" constant="8" id="ZbL-zJ-jfC"/>
+                    <constraint firstAttribute="bottom" secondItem="Qhc-tf-TMV" secondAttribute="bottom" constant="20" id="f5R-jV-AUn"/>
+                </constraints>
+            </view>
+            <connections>
+                <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
+            </connections>
+        </window>
+    </objects>
+</document>

@@ -11,6 +11,9 @@
 		5091E5951ECC17710069926B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5091E5941ECC17710069926B /* Assets.xcassets */; };
 		5091E5981ECC17710069926B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5091E5961ECC17710069926B /* MainMenu.xib */; };
 		5091E5A31ECC17710069926B /* WebcamSnapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5091E5A21ECC17710069926B /* WebcamSnapTests.swift */; };
+		5091E5B11ECC187C0069926B /* SnapWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5091E5AF1ECC187C0069926B /* SnapWindowController.swift */; };
+		5091E5B21ECC187C0069926B /* SnapWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5091E5B01ECC187C0069926B /* SnapWindowController.xib */; };
+		5091E5B41ECC26320069926B /* Webcam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5091E5B31ECC26320069926B /* Webcam.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +35,9 @@
 		5091E59E1ECC17710069926B /* WebcamSnapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WebcamSnapTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5091E5A21ECC17710069926B /* WebcamSnapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebcamSnapTests.swift; sourceTree = "<group>"; };
 		5091E5A41ECC17710069926B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5091E5AF1ECC187C0069926B /* SnapWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapWindowController.swift; sourceTree = "<group>"; };
+		5091E5B01ECC187C0069926B /* SnapWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SnapWindowController.xib; sourceTree = "<group>"; };
+		5091E5B31ECC26320069926B /* Webcam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Webcam.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +83,7 @@
 				5091E5941ECC17710069926B /* Assets.xcassets */,
 				5091E5961ECC17710069926B /* MainMenu.xib */,
 				5091E5991ECC17710069926B /* Info.plist */,
+				5091E5AE1ECC18700069926B /* Snap */,
 			);
 			path = WebcamSnap;
 			sourceTree = "<group>";
@@ -88,6 +95,16 @@
 				5091E5A41ECC17710069926B /* Info.plist */,
 			);
 			path = WebcamSnapTests;
+			sourceTree = "<group>";
+		};
+		5091E5AE1ECC18700069926B /* Snap */ = {
+			isa = PBXGroup;
+			children = (
+				5091E5AF1ECC187C0069926B /* SnapWindowController.swift */,
+				5091E5B01ECC187C0069926B /* SnapWindowController.xib */,
+				5091E5B31ECC26320069926B /* Webcam.swift */,
+			);
+			name = Snap;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,6 +194,7 @@
 			files = (
 				5091E5951ECC17710069926B /* Assets.xcassets in Resources */,
 				5091E5981ECC17710069926B /* MainMenu.xib in Resources */,
+				5091E5B21ECC187C0069926B /* SnapWindowController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,6 +213,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5091E5931ECC17710069926B /* AppDelegate.swift in Sources */,
+				5091E5B11ECC187C0069926B /* SnapWindowController.swift in Sources */,
+				5091E5B41ECC26320069926B /* Webcam.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

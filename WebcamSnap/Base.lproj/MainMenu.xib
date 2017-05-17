@@ -16,7 +16,6 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="WebcamSnap" customModuleProvider="target">
             <connections>
-                <outlet property="previewView" destination="zSL-OK-S6c" id="CsW-kU-KAu"/>
                 <outlet property="resultImageView" destination="dYU-S5-ZFD" id="wgu-NR-VrH"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
@@ -683,7 +682,7 @@
                 </menuItem>
             </items>
         </menu>
-        <window title="WebcamSnap" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
+        <window title="WebcamSnap" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="335" y="390" width="480" height="360"/>
@@ -704,24 +703,20 @@
                         </connections>
                     </button>
                     <box autoresizesSubviews="NO" fixedFrame="YES" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="klO-Ep-geL">
-                        <rect key="frame" x="96" y="-1" width="289" height="219"/>
+                        <rect key="frame" x="27" y="26" width="427" height="275"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <view key="contentView" id="yHc-wC-ZAc">
-                            <rect key="frame" x="1" y="1" width="287" height="217"/>
+                            <rect key="frame" x="1" y="1" width="425" height="273"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dYU-S5-ZFD">
-                                    <rect key="frame" x="20" y="36" width="247" height="161"/>
+                                    <rect key="frame" x="10" y="13" width="405" height="248"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="qhd-8E-bVo"/>
                                 </imageView>
                             </subviews>
                         </view>
                     </box>
-                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zSL-OK-S6c">
-                        <rect key="frame" x="159" y="222" width="161" height="86"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    </customView>
                 </subviews>
             </view>
             <point key="canvasLocation" x="141" y="-105"/>
