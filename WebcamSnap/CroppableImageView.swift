@@ -196,7 +196,7 @@ public class CroppableImageView: NSImageView {
         abortCropping()
         return true
     }
-    
+
     @discardableResult
     fileprivate func handleSelectAll(event: NSEvent) -> Bool {
 

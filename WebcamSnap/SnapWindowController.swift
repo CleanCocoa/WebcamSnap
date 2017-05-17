@@ -56,6 +56,10 @@ class SnapWindowController: NSWindowController {
         resultImageView.pick = { [weak self] in
             self?.pickImage(image: $0)
         }
+        resultImageView.cancel = { [weak self] in
+            self?.cancelOperation(nil)
+            return ()
+        }
     }
 
 
@@ -124,7 +128,7 @@ class SnapWindowController: NSWindowController {
         closeSheet()
     }
 
-    @IBAction func cancel(_ sender: Any) {
+    @IBAction override func cancelOperation(_ sender: Any?) {
 
         result = .cancel
         closeSheet()

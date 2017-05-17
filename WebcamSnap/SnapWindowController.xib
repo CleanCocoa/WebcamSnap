@@ -50,7 +50,7 @@ Gw
 </string>
                         </buttonCell>
                         <connections>
-                            <action selector="cancel:" target="-2" id="fZn-fb-KjJ"/>
+                            <action selector="cancelOperation:" target="-2" id="WII-ja-eG7"/>
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Qhc-tf-TMV">
@@ -132,7 +132,7 @@ Gw
 </string>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="cancel:" target="-2" id="gt8-1C-Vgw"/>
+                                    <action selector="cancelOperation:" target="-2" id="mW5-ir-Ir0"/>
                                 </connections>
                             </button>
                         </subviews>
