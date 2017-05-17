@@ -20,6 +20,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         resultImageView.crop = { [weak self] in
             self?.replaceImage(image: $0)
         }
+        resultImageView.pick = { [weak self] in
+            self?.pickImage(image: $0)
+        }
     }
 
     // MARK: -
@@ -75,6 +78,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 self.replaceImage(image: image)
             }
         }
+    }
+
+
+
+    fileprivate func pickImage(image: NSImage) {
+
+        print("picked!")
     }
 
     fileprivate func replaceImage(image: NSImage) {

@@ -109,15 +109,31 @@
 		5091E5AE1ECC18700069926B /* Snap */ = {
 			isa = PBXGroup;
 			children = (
+				5091E5B91ECC39780069926B /* SnapPicture.swift */,
+				5091E5C41ECC7A790069926B /* Croppable Image */,
+				5091E5C51ECC7A820069926B /* Webcam Snapping */,
+			);
+			name = Snap;
+			sourceTree = "<group>";
+		};
+		5091E5C41ECC7A790069926B /* Croppable Image */ = {
+			isa = PBXGroup;
+			children = (
 				5091E5BE1ECC4C490069926B /* CroppableImageView.swift */,
 				5091E5C11ECC4D4B0069926B /* SCSelectionBorder.h */,
 				5091E5C21ECC4D4B0069926B /* SCSelectionBorder.m */,
+			);
+			name = "Croppable Image";
+			sourceTree = "<group>";
+		};
+		5091E5C51ECC7A820069926B /* Webcam Snapping */ = {
+			isa = PBXGroup;
+			children = (
 				5091E5AF1ECC187C0069926B /* SnapWindowController.swift */,
-				5091E5B91ECC39780069926B /* SnapPicture.swift */,
 				5091E5B01ECC187C0069926B /* SnapWindowController.xib */,
 				5091E5B31ECC26320069926B /* Webcam.swift */,
 			);
-			name = Snap;
+			name = "Webcam Snapping";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

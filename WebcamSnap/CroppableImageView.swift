@@ -6,6 +6,7 @@ public class CroppableImageView: NSImageView {
 
     public var cancel: (() -> Void)?
     public var crop: ((NSImage) -> Void)?
+    public var pick: ((NSImage) -> Void)?
 
     public override var acceptsFirstResponder: Bool { return true }
 
@@ -66,16 +67,43 @@ public class CroppableImageView: NSImageView {
         guard didHandleEvent else { super.keyDown(with: event); return }
     }
 
+    @discardableResult
     fileprivate func handleEnter(event: NSEvent) -> Bool {
 
-        guard let cropMarker = self.cropMarker,
+        guard let image = self.image,
 
-            let crop = self.crop,
             event.keyCode == 36 ||
-            event.keyCode == 76,
-
-            let image = self.image
+            event.keyCode == 76
             else { return false }
+
+        guard self.cropMarker != nil else {
+            return handlePicking(image: image)
+        }
+
+        return handleCropping(image: image)
+    }
+
+    @discardableResult
+    fileprivate func handlePicking(image: NSImage) -> Bool {
+
+        guard let pick = self.pick else { return false }
+
+        pick(image)
+        return true
+    }
+
+    @IBAction func cropSelection(_ sender: Any?) {
+
+        guard let image = self.image else { return }
+
+        handleCropping(image: image)
+    }
+
+    @discardableResult
+    fileprivate func handleCropping(image: NSImage) -> Bool {
+
+        guard let cropMarker = self.cropMarker,
+            let crop = self.crop else { return false }
 
         let imageSize = image.size
         let drawingRect = self.bounds
@@ -113,12 +141,13 @@ public class CroppableImageView: NSImageView {
         let result = NSImage(size: selectionRect.size, flipped: false) { _ -> Bool in
             representation.draw(in: NSRect(x: 0, y: 0, width: selectionRect.width, height: selectionRect.height), from: selectionRect, operation: .sourceOver, fraction: 1, respectFlipped: false, hints: nil)
         }
-
+        
         crop(result)
-
+        
         return true
     }
 
+    @discardableResult
     fileprivate func handleEscape(event: NSEvent) -> Bool {
 
         guard let cancel = self.cancel,
@@ -133,6 +162,7 @@ public class CroppableImageView: NSImageView {
         return true
     }
 
+    @discardableResult
     fileprivate func handleSelectAll(event: NSEvent) -> Bool {
 
         guard let cropMarker = self.cropMarker else { return false }
@@ -163,6 +193,7 @@ public class CroppableImageView: NSImageView {
         }
     }
 
+    @discardableResult
     fileprivate func handleTranslation(event: NSEvent) -> Bool {
 
         guard let direction = Direction(rawValue: event.keyCode),
