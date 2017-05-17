@@ -80,17 +80,23 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         do {
             self.session = try Webcam()
         } catch {
-            self.session?.stop()
+            print("session setup failed")
             return
         }
 
-        self.session?.start()
+        guard let webcam = session else { return }
+
+        webcam.start()
 
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(4)) {
 
-            self.session?.captureImage(result: { (image, error) in
+            webcam.captureImage(result: { (image, error) in
 
-                defer { self.session?.stop() }
+                defer {
+                    DispatchQueue.main.async {
+                        webcam.stop()
+                    }
+                }
 
                 if let error = error {
                     print("\(error)")
