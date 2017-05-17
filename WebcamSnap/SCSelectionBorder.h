@@ -71,7 +71,6 @@ NS_ASSUME_NONNULL_BEGIN;
 // Drawing
 - (void)drawContentInView:(NSView *)aView;
 
-
 // Handle checking
 - (NSInteger)handleAtPoint:(NSPoint)point frameRect:(NSRect)bounds;
 - (NSPoint)locationOfHandle:(SCSelectionBorderHandle)handle frameRect:(NSRect)bounds;
@@ -81,5 +80,6 @@ NS_ASSUME_NONNULL_BEGIN;
  */
 - (void)selectAndTrackMouseWithEvent:(NSEvent *)theEvent atPoint:(NSPoint)mouseLocation inView:(NSView *)view;
 
+- (void)translateByX:(CGFloat)deltaX y:(CGFloat)deltaY inView:(NSView *)view;
 @end
 NS_ASSUME_NONNULL_END;

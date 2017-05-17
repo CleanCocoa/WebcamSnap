@@ -36,6 +36,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         case false:
             resultImageView.cancelCropping()
         }
+
+        makeImageViewFirstResponder()
+    }
+
+    private func makeImageViewFirstResponder() {
+
+        self.window.makeFirstResponder(resultImageView)
     }
 
     @IBAction func toggleAspectRatio(_ sender: Any) {
@@ -48,6 +55,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         case false:
             resultImageView.disableAspectRatio(sender)
         }
+
+        makeImageViewFirstResponder()
     }
 
     @IBAction func newSnap(_ sender: Any) {
@@ -59,6 +68,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             case .picture(let image):
                 self.placeholderLabel.isHidden = true
                 self.resultImageView.image = image
+                self.makeImageViewFirstResponder()
             }
         }
     }

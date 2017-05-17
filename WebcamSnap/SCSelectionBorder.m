@@ -43,7 +43,6 @@ const CGFloat SCSelectionBorderHandleHalfWidth = 10.0f / 2.0f;
 - (BOOL)isPoint:(NSPoint)point withinHandleAtPoint:(NSPoint)handlePoint;
 
 //layout
-- (void)translateByX:(CGFloat)deltaX y:(CGFloat)deltaY inView:(NSView *)view;
 - (void)moveWithEvent:(NSEvent *)theEvent atPoint:(NSPoint)where inView:(NSView *)view;
 - (void)resizeWithEvent:(NSEvent *)theEvent byHandle:(SCSelectionBorderHandle)handle atPoint:(NSPoint)where inView:(NSView *)view;
 - (NSInteger)resizeByMovingHandle:(SCSelectionBorderHandle)handle toPoint:(NSPoint)where inView:(NSView *)view;
