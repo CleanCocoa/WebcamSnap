@@ -17,6 +17,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // MARK: -
 
     @IBOutlet weak var resultImageView: NSImageView!
+    @IBOutlet weak var previewView: NSView!
 
     class Webcam {
 
@@ -53,6 +54,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             if session.isRunning { stop() }
         }
 
+        func showPreview(in hostingView: NSView) {
+
+            guard let previewLayer = AVCaptureVideoPreviewLayer(session: session) else { return }
+            previewLayer.frame = hostingView.bounds
+
+            hostingView.wantsLayer = true
+            hostingView.layer?.addSublayer(previewLayer)
+        }
+
         func captureImage(result: @escaping (NSImage?, Error?) -> Void) {
 
             let connection = stillImageOutput.connection(withMediaType: AVMediaTypeVideo)
@@ -87,6 +97,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         guard let webcam = session else { return }
 
         webcam.start()
+        webcam.showPreview(in: previewView)
 
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(4)) {
 

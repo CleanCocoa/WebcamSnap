@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,6 +16,7 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="WebcamSnap" customModuleProvider="target">
             <connections>
+                <outlet property="previewView" destination="zSL-OK-S6c" id="CsW-kU-KAu"/>
                 <outlet property="resultImageView" destination="dYU-S5-ZFD" id="wgu-NR-VrH"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
@@ -701,13 +703,28 @@
                             <action selector="newSnap:" target="Voe-Tx-rLC" id="aLc-7G-3Vg"/>
                         </connections>
                     </button>
-                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dYU-S5-ZFD">
-                        <rect key="frame" x="64" y="20" width="353" height="266"/>
+                    <box autoresizesSubviews="NO" fixedFrame="YES" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="klO-Ep-geL">
+                        <rect key="frame" x="96" y="-1" width="289" height="219"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="qhd-8E-bVo"/>
-                    </imageView>
+                        <view key="contentView" id="yHc-wC-ZAc">
+                            <rect key="frame" x="1" y="1" width="287" height="217"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dYU-S5-ZFD">
+                                    <rect key="frame" x="20" y="36" width="247" height="161"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="qhd-8E-bVo"/>
+                                </imageView>
+                            </subviews>
+                        </view>
+                    </box>
+                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zSL-OK-S6c">
+                        <rect key="frame" x="159" y="222" width="161" height="86"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    </customView>
                 </subviews>
             </view>
+            <point key="canvasLocation" x="141" y="-105"/>
         </window>
     </objects>
 </document>
