@@ -1,7 +1,6 @@
 //  Copyright © 2017 Christian Tietze. All rights reserved. Distributed under the MIT License.
 
 import Cocoa
-import Quartz
 
 // Make Strings throwable
 extension String: Error {}
@@ -13,15 +12,43 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
 
-        self.currentTool = .pan
+        resultImageView.wantsLayer = true
+        resultImageView.layer?.backgroundColor = NSColor.darkGray.cgColor
     }
 
     // MARK: -
 
     lazy var snapPicture: SnapPicture = SnapPicture()
-    @IBOutlet weak var resultImageView: IKImageView!
+    @IBOutlet weak var resultImageView: CroppableImageView!
     @IBOutlet weak var placeholderLabel: NSTextField!
-    @IBOutlet weak var toolsSegmentedControl: NSSegmentedControl!
+
+    @IBOutlet weak var cropToggleButton: NSButton!
+    @IBOutlet weak var aspectRatioCheckBox: NSButton!
+
+    @IBAction func toggleCropping(_ sender: Any) {
+
+        let enabled = (cropToggleButton.state == NSOnState)
+        aspectRatioCheckBox.isEnabled = enabled
+
+        switch enabled {
+        case true:
+            resultImageView.startCropping()
+        case false:
+            resultImageView.cancelCropping()
+        }
+    }
+
+    @IBAction func toggleAspectRatio(_ sender: Any) {
+
+        let lockRatio = (aspectRatioCheckBox.state == NSOnState)
+
+        switch lockRatio {
+        case true:
+            resultImageView.enableAspectRatio(sender)
+        case false:
+            resultImageView.disableAspectRatio(sender)
+        }
+    }
 
     @IBAction func newSnap(_ sender: Any) {
 
@@ -31,51 +58,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             case .error(let error): print("error taking picture: \(error)")
             case .picture(let image):
                 self.placeholderLabel.isHidden = true
-                self.resultImageView.setImage(
-                    image.cgImage(forProposedRect: nil, context: nil, hints: nil),
-                    imageProperties: [:])
+                self.resultImageView.image = image
             }
         }
-    }
-
-    enum Tool: Int {
-        case pan = 0
-        case crop = 1
-        case rotate = 2
-
-        var toolMode: String {
-            switch self {
-            case .pan: return IKToolModeMove
-            case .crop: return IKToolModeCrop
-            case .rotate: return IKToolModeRotate
-            }
-        }
-    }
-
-    var currentTool: Tool! {
-        didSet {
-            resultImageView.currentToolMode = currentTool.toolMode
-            toolsSegmentedControl.selectedSegment = currentTool.rawValue
-        }
-    }
-
-    @IBAction func switchTool(_ sender: Any) {
-
-        func rawToolValue(control: Any) -> Int? {
-
-            switch control {
-            case let segmentedControl as NSSegmentedControl:
-                return segmentedControl.selectedSegment
-
-            default: return nil
-            }
-        }
-
-        guard let rawValue = rawToolValue(control: sender),
-            let tool = Tool(rawValue: rawValue)
-            else { assertionFailure("Couldn't figure out tool."); return }
-
-        resultImageView.currentToolMode = tool.toolMode
     }
 }
-
