@@ -14,6 +14,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         resultImageView.wantsLayer = true
         resultImageView.layer?.backgroundColor = NSColor.darkGray.cgColor
+        resultImageView.cancel = { [weak self] in
+            self?.cropToggleButton.state = NSOffState
+            self?.toggleCropping(nil)
+        }
     }
 
     // MARK: -
@@ -25,7 +29,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var cropToggleButton: NSButton!
     @IBOutlet weak var aspectRatioCheckBox: NSButton!
 
-    @IBAction func toggleCropping(_ sender: Any) {
+    @IBAction func toggleCropping(_ sender: Any?) {
 
         let enabled = (cropToggleButton.state == NSOnState)
         aspectRatioCheckBox.isEnabled = enabled
@@ -45,7 +49,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.window.makeFirstResponder(resultImageView)
     }
 
-    @IBAction func toggleAspectRatio(_ sender: Any) {
+    @IBAction func toggleAspectRatio(_ sender: Any?) {
 
         let lockRatio = (aspectRatioCheckBox.state == NSOnState)
 
@@ -59,7 +63,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         makeImageViewFirstResponder()
     }
 
-    @IBAction func newSnap(_ sender: Any) {
+    @IBAction func newSnap(_ sender: Any?) {
 
         snapPicture.showSheet(hostingWindow: window) { result in
             switch result {

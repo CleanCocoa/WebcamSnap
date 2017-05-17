@@ -4,6 +4,8 @@ import Cocoa
 
 public class CroppableImageView: NSImageView {
 
+    public var cancel: (() -> Void)?
+
     public override var acceptsFirstResponder: Bool { return true }
 
     public func startCropping() {
@@ -50,6 +52,46 @@ public class CroppableImageView: NSImageView {
         cropMarker.selectAndTrackMouse(with: event, at: lastLocation, in: self)
     }
 
+
+    // MARK: - Keyboard Control
+
+    public override func keyDown(with event: NSEvent) {
+
+        let didHandleEvent = handleEscape(event: event)
+            || handleSelectAll(event: event)
+            || handleTranslation(event: event)
+
+        guard didHandleEvent else { super.keyDown(with: event); return }
+    }
+
+    fileprivate func handleEscape(event: NSEvent) -> Bool {
+
+        guard let cancel = self.cancel,
+            // Escape Key
+            event.keyCode == 53
+            // ⌘.
+            || (event.characters?.characters.first == "."
+                && event.modifierFlags.contains(.command))
+            else { return false }
+
+        cancel()
+        return true
+    }
+
+    fileprivate func handleSelectAll(event: NSEvent) -> Bool {
+
+        guard let cropMarker = self.cropMarker else { return false }
+
+        guard event.characters?.lowercased().characters.first == "a"
+            && event.modifierFlags.contains(.command)
+            else { return false}
+
+        cropMarker.selectedRect = self.bounds
+        setNeedsDisplay()
+
+        return true
+    }
+
     enum Direction: UInt16 {
         case left = 123
         case right = 124
@@ -66,14 +108,10 @@ public class CroppableImageView: NSImageView {
         }
     }
 
-    public override func keyDown(with event: NSEvent) {
+    fileprivate func handleTranslation(event: NSEvent) -> Bool {
 
-        guard let direction = Direction(rawValue: event.keyCode) else {
-            super.keyDown(with: event)
-            return
-        }
-
-        guard let cropMarker = self.cropMarker else { return }
+        guard let direction = Direction(rawValue: event.keyCode),
+            let cropMarker = self.cropMarker else { return false }
 
         let speed: CGAffineTransform = {
             if event.modifierFlags.contains(.shift) {
@@ -87,9 +125,13 @@ public class CroppableImageView: NSImageView {
 
         cropMarker.translateBy(x: translation.x, y: translation.y, in: self)
         setNeedsDisplay()
+
+        return true
     }
 
-    @IBAction public func enableAspectRatio(_ sender: Any) {
+    // MARK: - Actions
+
+    @IBAction public func enableAspectRatio(_ sender: Any?) {
 
         guard let cropMarker = self.cropMarker else { return }
 
@@ -99,7 +141,7 @@ public class CroppableImageView: NSImageView {
         setNeedsDisplay()
     }
 
-    @IBAction public func disableAspectRatio(_ sender: Any) {
+    @IBAction public func disableAspectRatio(_ sender: Any?) {
 
         guard let cropMarker = self.cropMarker else { return }
 
