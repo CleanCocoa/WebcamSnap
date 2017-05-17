@@ -5,6 +5,7 @@ import Cocoa
 public class CroppableImageView: NSImageView {
 
     public var cancel: (() -> Void)?
+    public var crop: ((NSImage) -> Void)?
 
     public override var acceptsFirstResponder: Bool { return true }
 
@@ -60,8 +61,62 @@ public class CroppableImageView: NSImageView {
         let didHandleEvent = handleEscape(event: event)
             || handleSelectAll(event: event)
             || handleTranslation(event: event)
+            || handleEnter(event: event)
 
         guard didHandleEvent else { super.keyDown(with: event); return }
+    }
+
+    fileprivate func handleEnter(event: NSEvent) -> Bool {
+
+        guard let cropMarker = self.cropMarker,
+
+            let crop = self.crop,
+            event.keyCode == 36 ||
+            event.keyCode == 76,
+
+            let image = self.image
+            else { return false }
+
+        let imageSize = image.size
+        let drawingRect = self.bounds
+
+        let diff: (factor: CGFloat, offset: NSPoint) = { () -> (CGFloat, NSPoint) in
+            let drawingAspect = drawingRect.width / drawingRect.height
+            let imageAspect = imageSize.width / imageSize.height
+            if imageAspect > drawingAspect {
+                // Full width, cropped height
+                let factor = imageSize.width / drawingRect.width
+
+                let imageHeightInFrame = imageSize.height / factor
+                let offsetY = (drawingRect.height - imageHeightInFrame) / 2
+                let offset = NSPoint(x: 0, y: -offsetY)
+
+                return (factor, offset)
+            } else {
+                // Full height, cropped width
+                let factor = imageSize.height / drawingRect.height
+
+                let imageWidthInFrame = imageSize.width / factor
+                let offsetX = (drawingRect.width - imageWidthInFrame) / 2
+                let offset = NSPoint(x: -offsetX, y: 0)
+
+                return (factor, offset)
+            }
+        }()
+        let scaling = CGAffineTransform(scaleX: diff.factor, y: diff.factor)
+        let translation = CGAffineTransform(translationX: diff.offset.x, y: diff.offset.y)
+        let selectionRect = cropMarker.selectedRect.applying(translation).applying(scaling)
+
+        guard let representation = image.bestRepresentation(for: selectionRect, context: nil, hints: nil)
+            else { return false }
+
+        let result = NSImage(size: selectionRect.size, flipped: false) { _ -> Bool in
+            representation.draw(in: NSRect(x: 0, y: 0, width: selectionRect.width, height: selectionRect.height), from: selectionRect, operation: .sourceOver, fraction: 1, respectFlipped: false, hints: nil)
+        }
+
+        crop(result)
+
+        return true
     }
 
     fileprivate func handleEscape(event: NSEvent) -> Bool {

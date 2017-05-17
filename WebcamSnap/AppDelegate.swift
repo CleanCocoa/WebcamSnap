@@ -15,8 +15,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         resultImageView.wantsLayer = true
         resultImageView.layer?.backgroundColor = NSColor.darkGray.cgColor
         resultImageView.cancel = { [weak self] in
-            self?.cropToggleButton.state = NSOffState
-            self?.toggleCropping(nil)
+            self?.resetCropping()
+        }
+        resultImageView.crop = { [weak self] in
+            self?.replaceImage(image: $0)
         }
     }
 
@@ -70,10 +72,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             case .cancel: break
             case .error(let error): print("error taking picture: \(error)")
             case .picture(let image):
-                self.placeholderLabel.isHidden = true
-                self.resultImageView.image = image
-                self.makeImageViewFirstResponder()
+                self.replaceImage(image: image)
             }
         }
+    }
+
+    fileprivate func replaceImage(image: NSImage) {
+
+        placeholderLabel.isHidden = true
+        resultImageView.image = image
+        resetCropping()
+        makeImageViewFirstResponder()
+    }
+
+    fileprivate func resetCropping() {
+
+        cropToggleButton.state = NSOffState
+        toggleCropping(nil)
     }
 }
