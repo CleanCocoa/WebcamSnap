@@ -3,7 +3,7 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
-        <capability name="box content view" minToolsVersion="7.0"/>
+        <plugIn identifier="com.apple.imagekit.ibplugin" version="11762"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,7 +16,10 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="WebcamSnap" customModuleProvider="target">
             <connections>
-                <outlet property="resultImageView" destination="dYU-S5-ZFD" id="wgu-NR-VrH"/>
+                <outlet property="ikImageView" destination="tf3-jJ-mpS" id="sHG-3h-Aew"/>
+                <outlet property="placeholderLabel" destination="xcZ-uH-ghl" id="VSm-bQ-p7Z"/>
+                <outlet property="resultImageView" destination="tf3-jJ-mpS" id="WKu-yC-hkq"/>
+                <outlet property="toolsSegmentedControl" destination="6Mc-gC-A9N" id="KS8-go-sVd"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -685,15 +688,14 @@
         <window title="WebcamSnap" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="335" y="390" width="480" height="360"/>
+            <rect key="contentRect" x="335" y="390" width="480" height="410"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
+                <rect key="frame" x="0.0" y="0.0" width="480" height="410"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vAa-O7-y0S">
-                        <rect key="frame" x="189" y="312" width="102" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vAa-O7-y0S">
+                        <rect key="frame" x="189" y="362" width="102" height="32"/>
                         <buttonCell key="cell" type="push" title="New Snap" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gXU-tq-n3g">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -702,24 +704,47 @@
                             <action selector="newSnap:" target="Voe-Tx-rLC" id="aLc-7G-3Vg"/>
                         </connections>
                     </button>
-                    <box autoresizesSubviews="NO" fixedFrame="YES" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="klO-Ep-geL">
-                        <rect key="frame" x="27" y="26" width="427" height="275"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <view key="contentView" id="yHc-wC-ZAc">
-                            <rect key="frame" x="1" y="1" width="425" height="273"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <subviews>
-                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dYU-S5-ZFD">
-                                    <rect key="frame" x="10" y="13" width="405" height="248"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="qhd-8E-bVo"/>
-                                </imageView>
-                            </subviews>
-                        </view>
-                    </box>
+                    <ikImageView wantsLayer="YES" supportsDragAndDrop="NO" editable="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tf3-jJ-mpS">
+                        <rect key="frame" x="0.0" y="38" width="480" height="311"/>
+                        <color key="backgroundColor" red="0.50002289" green="0.50002289" blue="0.50002289" alpha="1" colorSpace="deviceRGB"/>
+                    </ikImageView>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xcZ-uH-ghl">
+                        <rect key="frame" x="183" y="185" width="115" height="17"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Take image to edit" id="XHP-lg-WKg">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6Mc-gC-A9N">
+                        <rect key="frame" x="8" y="6" width="157" height="25"/>
+                        <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="r9I-t9-Tbd">
+                            <font key="font" metaFont="system"/>
+                            <segments>
+                                <segment label="Pan"/>
+                                <segment label="Crop" selected="YES" tag="1"/>
+                                <segment label="Rotate"/>
+                            </segments>
+                        </segmentedCell>
+                        <connections>
+                            <action selector="switchTool:" target="Voe-Tx-rLC" id="dPI-nQ-DkE"/>
+                        </connections>
+                    </segmentedControl>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="vAa-O7-y0S" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" id="0u7-XU-IeF"/>
+                    <constraint firstItem="6Mc-gC-A9N" firstAttribute="top" secondItem="tf3-jJ-mpS" secondAttribute="bottom" constant="8" id="6Ta-hI-mdO"/>
+                    <constraint firstItem="6Mc-gC-A9N" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="8" id="M6a-Vd-8XI"/>
+                    <constraint firstItem="tf3-jJ-mpS" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" id="M6b-lg-ev7"/>
+                    <constraint firstItem="vAa-O7-y0S" firstAttribute="centerX" secondItem="EiT-Mj-1SZ" secondAttribute="centerX" id="MHq-U7-vFc"/>
+                    <constraint firstItem="tf3-jJ-mpS" firstAttribute="top" secondItem="vAa-O7-y0S" secondAttribute="bottom" constant="20" id="Qyq-JE-Jr9"/>
+                    <constraint firstItem="xcZ-uH-ghl" firstAttribute="centerX" secondItem="tf3-jJ-mpS" secondAttribute="centerX" id="TWP-Ey-Oir"/>
+                    <constraint firstAttribute="bottom" secondItem="6Mc-gC-A9N" secondAttribute="bottom" constant="8" id="gPT-gO-wod"/>
+                    <constraint firstAttribute="trailing" secondItem="tf3-jJ-mpS" secondAttribute="trailing" id="hPN-3Z-U50"/>
+                    <constraint firstItem="xcZ-uH-ghl" firstAttribute="centerY" secondItem="tf3-jJ-mpS" secondAttribute="centerY" id="ljC-bd-ufF"/>
+                </constraints>
             </view>
-            <point key="canvasLocation" x="141" y="-105"/>
+            <point key="canvasLocation" x="141" y="-80"/>
         </window>
     </objects>
 </document>
