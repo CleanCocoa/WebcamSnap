@@ -17,7 +17,10 @@ class SnapWindowController: NSWindowController {
         previewView.wantsLayer = true
         previewView.layer?.backgroundColor = NSColor.black.cgColor
     }
-    
+
+
+    // MARK: Actions
+
     @IBAction func snap(_ sender: Any) {
 
         guard let webcam = self.webcam else { return }
@@ -38,22 +41,18 @@ class SnapWindowController: NSWindowController {
         })
     }
 
-    func closeSheet(returnCode: NSModalResponse = NSModalResponseOK) {
+    @IBAction func cancel(_ sender: Any) {
 
-        guard let window = self.window else { preconditionFailure("expected window outlet") }
-
-        window.sheetParent?.endSheet(window, returnCode: returnCode)
+        result = .cancel
+        closeSheet()
     }
 
-    enum Result {
-        case cancel
-        case error(Error?)
-        case picture(NSImage)
-    }
 
-    var result: Result?
+    // MARK: - Window-as-Sheet Management
 
-    func showAsSheet(hostingWindow: NSWindow, completion: @escaping (Result) -> Void) {
+    var result: SnapResult?
+
+    func showAsSheet(hostingWindow: NSWindow, completion: @escaping (SnapResult) -> Void) {
 
         guard let window = self.window else { preconditionFailure("expected window outlet") }
 
@@ -75,15 +74,16 @@ class SnapWindowController: NSWindowController {
         webcam?.showPreview(in: previewView)
     }
 
-    @IBAction func cancel(_ sender: Any) {
-
-        result = .cancel
-        closeSheet()
-    }
-
     func finish(image: NSImage) {
 
         result = .picture(image)
         closeSheet()
+    }
+
+    func closeSheet(returnCode: NSModalResponse = NSModalResponseOK) {
+
+        guard let window = self.window else { preconditionFailure("expected window outlet") }
+
+        window.sheetParent?.endSheet(window, returnCode: returnCode)
     }
 }

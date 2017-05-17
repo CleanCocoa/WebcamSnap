@@ -18,12 +18,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var resultImageView: NSImageView!
     @IBOutlet weak var previewView: NSView!
-    lazy var snapWindowController: SnapWindowController = SnapWindowController()
-
+    lazy var snapPicture: SnapPicture = SnapPicture()
 
     @IBAction func newSnap(_ sender: Any) {
 
-        snapWindowController.showAsSheet(hostingWindow: window) { result in
+        snapPicture.showSheet(hostingWindow: window) { result in
             switch result {
             case .cancel: break
             case .error(let error): print("error taking picture: \(error)")
