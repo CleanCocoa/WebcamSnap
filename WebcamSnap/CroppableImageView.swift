@@ -4,7 +4,7 @@ import Cocoa
 
 public class CroppableImageView: NSImageView {
 
-    public var cancel: (() -> Void)?
+    public var abortCropping: (() -> Void)?
     public var crop: ((NSImage) -> Void)?
     public var pick: ((NSImage) -> Void)?
 
@@ -14,7 +14,18 @@ public class CroppableImageView: NSImageView {
 
         self.cropMarker = {
             let cropMarker = SCSelectionBorder()
-            cropMarker.selectedRect = NSMakeRect(100, 100, 200, 200)
+
+            let smallestSide = min(
+                self.bounds.size.width,
+                self.bounds.size.height)
+            let cropSize = NSSize(
+                width: smallestSide * 0.8,
+                height: smallestSide * 0.8)
+            let cropOrigin = NSPoint(
+                x: (self.bounds.size.width - cropSize.width) / 2,
+                y: (self.bounds.size.height - cropSize.height) / 2)
+            cropMarker.selectedRect =
+                NSRect(origin: cropOrigin, size: cropSize)
             cropMarker.fillColor = self.croppedFillColor
             return cropMarker
         }()
@@ -150,7 +161,7 @@ public class CroppableImageView: NSImageView {
     @discardableResult
     fileprivate func handleEscape(event: NSEvent) -> Bool {
 
-        guard let cancel = self.cancel,
+        guard let abortCropping = self.abortCropping,
             // Escape Key
             event.keyCode == 53
             // ⌘.
@@ -158,7 +169,7 @@ public class CroppableImageView: NSImageView {
                 && event.modifierFlags.contains(.command))
             else { return false }
 
-        cancel()
+        abortCropping()
         return true
     }
 

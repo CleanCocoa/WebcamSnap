@@ -15,8 +15,6 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="WebcamSnap" customModuleProvider="target">
             <connections>
-                <outlet property="aspectRatioCheckBox" destination="IOR-nI-fYm" id="G34-HZ-Ggd"/>
-                <outlet property="cropToggleButton" destination="Ngy-Nt-TNN" id="VoT-Ia-9tr"/>
                 <outlet property="placeholderLabel" destination="xcZ-uH-ghl" id="VSm-bQ-p7Z"/>
                 <outlet property="resultImageView" destination="1QT-os-Kp6" id="QXN-Io-uUY"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
@@ -703,55 +701,27 @@
                             <action selector="newSnap:" target="Voe-Tx-rLC" id="aLc-7G-3Vg"/>
                         </connections>
                     </button>
-                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="1QT-os-Kp6" customClass="CroppableImageView" customModule="WebcamSnap" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="38" width="480" height="311"/>
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="1QT-os-Kp6">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="349"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="7Tk-0t-YRP"/>
                     </imageView>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xcZ-uH-ghl">
-                        <rect key="frame" x="183" y="185" width="115" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Take image to edit" id="XHP-lg-WKg">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xcZ-uH-ghl">
+                        <rect key="frame" x="204" y="166" width="73" height="17"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Take Image" id="XHP-lg-WKg">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <button translatesAutoresizingMaskIntoConstraints="NO" id="IOR-nI-fYm">
-                        <rect key="frame" x="70" y="8" width="119" height="18"/>
-                        <buttonCell key="cell" type="check" title="1:1 Aspect Ratio" bezelStyle="regularSquare" imagePosition="left" enabled="NO" inset="2" id="7ca-2g-QPc">
-                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="toggleAspectRatio:" target="Voe-Tx-rLC" id="87G-nN-0LK"/>
-                        </connections>
-                    </button>
-                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ngy-Nt-TNN">
-                        <rect key="frame" x="8" y="7" width="44" height="19"/>
-                        <buttonCell key="cell" type="recessed" title="Crop" bezelStyle="recessed" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="lxz-a0-Zet">
-                            <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
-                            <font key="font" metaFont="systemBold" size="12"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="toggleCropping:" target="Voe-Tx-rLC" id="TdJ-uc-Do6"/>
-                            <binding destination="Voe-Tx-rLC" name="enabled" keyPath="self.resultImageView.image" id="cnx-w5-SNU">
-                                <dictionary key="options">
-                                    <string key="NSValueTransformerName">NSIsNotNil</string>
-                                </dictionary>
-                            </binding>
-                        </connections>
-                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="vAa-O7-y0S" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" id="0u7-XU-IeF"/>
-                    <constraint firstItem="IOR-nI-fYm" firstAttribute="leading" secondItem="Ngy-Nt-TNN" secondAttribute="trailing" constant="20" id="FLR-b6-A3Q"/>
+                    <constraint firstItem="xcZ-uH-ghl" firstAttribute="centerY" secondItem="1QT-os-Kp6" secondAttribute="centerY" id="2ek-vA-1vb"/>
                     <constraint firstItem="1QT-os-Kp6" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" id="LA9-cn-B8a"/>
                     <constraint firstItem="vAa-O7-y0S" firstAttribute="centerX" secondItem="EiT-Mj-1SZ" secondAttribute="centerX" id="MHq-U7-vFc"/>
                     <constraint firstAttribute="trailing" secondItem="1QT-os-Kp6" secondAttribute="trailing" id="NX5-MP-e8f"/>
-                    <constraint firstItem="Ngy-Nt-TNN" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="8" id="UNj-Nf-C29"/>
-                    <constraint firstItem="IOR-nI-fYm" firstAttribute="centerY" secondItem="Ngy-Nt-TNN" secondAttribute="centerY" id="XNL-eR-LaR"/>
-                    <constraint firstAttribute="bottom" secondItem="Ngy-Nt-TNN" secondAttribute="bottom" constant="8" id="cuT-2H-DMW"/>
-                    <constraint firstAttribute="bottom" secondItem="1QT-os-Kp6" secondAttribute="bottom" constant="38" id="fZd-pn-gQS"/>
+                    <constraint firstAttribute="bottom" secondItem="1QT-os-Kp6" secondAttribute="bottom" id="fZd-pn-gQS"/>
+                    <constraint firstItem="xcZ-uH-ghl" firstAttribute="centerX" secondItem="1QT-os-Kp6" secondAttribute="centerX" id="h3D-qF-4yb"/>
                     <constraint firstItem="1QT-os-Kp6" firstAttribute="top" secondItem="vAa-O7-y0S" secondAttribute="bottom" constant="20" id="mAb-vN-Do3"/>
                 </constraints>
             </view>

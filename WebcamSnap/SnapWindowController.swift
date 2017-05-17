@@ -8,18 +8,60 @@ class SnapWindowController: NSWindowController {
         self.init(windowNibName: "SnapWindowController")
     }
 
-    @IBOutlet weak var previewView: NSView!
     var webcam: Webcam?
+    @IBOutlet weak var takePictureButton: NSButton!
+    @IBOutlet weak var cancelTakingPictureButton: NSButton!
+    @IBOutlet weak var previewView: NSView!
+
+
+    @IBOutlet weak var resultImageView: CroppableImageView!
+    @IBOutlet weak var editingControlsView: NSView!
+
+    @IBOutlet weak var cropToggleButton: NSButton!
+    @IBOutlet weak var cropControlsView: NSView!
+    @IBOutlet weak var aspectRatioCheckBox: NSButton!
+    @IBOutlet weak var applyCropButton: NSButton!
+
+    @IBOutlet weak var useImageButton: NSButton!
+    @IBOutlet weak var cancelUsingImageButton: NSButton!
+    
 
     override func windowDidLoad() {
 
         super.windowDidLoad()
+
+        window?.contentView?.wantsLayer = true
+        window?.contentView?.layer?.backgroundColor = NSColor.black.cgColor
+
         previewView.wantsLayer = true
         previewView.layer?.backgroundColor = NSColor.black.cgColor
+
+        resultImageView.isEnabled = false
+        resultImageView.isHidden = true
+        previewView.alphaValue = 1.0
+        editingControlsView.alphaValue = 0.0
+        cropToggleButton.isEnabled = false
+        aspectRatioCheckBox.isEnabled = false
+        applyCropButton.isEnabled = false
+
+        cancelUsingImageButton.isEnabled = false
+        useImageButton.isEnabled = false
+
+        resultImageView.abortCropping = { [weak self] in
+            self?.resetCropping()
+        }
+        resultImageView.crop = { [weak self] in
+            self?.replaceImage(image: $0)
+        }
+        resultImageView.pick = { [weak self] in
+            self?.pickImage(image: $0)
+        }
     }
 
 
-    // MARK: Actions
+    // MARK: - Actions
+
+    // MARK: Snapping 
 
     @IBAction func snap(_ sender: Any) {
 
@@ -28,17 +70,58 @@ class SnapWindowController: NSWindowController {
         webcam.captureImage(result: { (image, error) in
 
             if let error = error {
-                print("\(error)")
+                self.abort(error: error)
                 return
             }
 
             guard let image = image else {
-                print("no image")
+                self.abort(error: "no image provided")
                 return
             }
 
-            self.finish(image: image)
+            self.finishSnapping(image: image)
         })
+    }
+
+    func finishSnapping(image: NSImage) {
+
+        result = .picture(image)
+
+        resultImageView.image = image
+        resultImageView.isEnabled = true
+        resultImageView.isHidden = false
+        editingControlsView.isHidden = false
+
+        NSAnimationContext.runAnimationGroup({ context in
+            context.duration = 0.2
+            context.allowsImplicitAnimation = true
+
+            cancelTakingPictureButton.alphaValue = 0.0
+            takePictureButton.alphaValue = 0.0
+            previewView.alphaValue = 0.0
+            editingControlsView.alphaValue = 1.0
+
+            window?.contentView?.layer?.backgroundColor = NSColor.windowBackgroundColor.cgColor
+        }, completionHandler: {
+            self.takePictureButton.isEnabled = false
+            self.takePictureButton.isHidden = true
+            self.cancelTakingPictureButton.isEnabled = false
+            self.cancelTakingPictureButton.isHidden = true
+
+            self.cropToggleButton.isEnabled = true
+            self.resetCropping()
+            
+            self.useImageButton.isEnabled = true
+            self.cancelUsingImageButton.isEnabled = true
+        })
+
+        makeResultImageViewFirstResponder()
+    }
+
+    func abort(error: Error) {
+
+        result = .error(error)
+        closeSheet()
     }
 
     @IBAction func cancel(_ sender: Any) {
@@ -47,6 +130,79 @@ class SnapWindowController: NSWindowController {
         closeSheet()
     }
 
+
+    // MARK: Editing
+
+    var isCropping: Bool = false {
+        didSet {
+            cropToggleButton.state = isCropping ? NSOnState : NSOffState
+            aspectRatioCheckBox.isEnabled = isCropping
+            applyCropButton.isEnabled = isCropping
+            useImageButton.isEnabled = !isCropping
+            cropControlsView.isHidden = !isCropping
+
+            switch isCropping {
+            case true:
+                resultImageView.startCropping()
+            case false:
+                resultImageView.cancelCropping()
+            }
+        }
+    }
+
+    @IBAction func toggleCrop(_ sender: Any?) {
+
+        isCropping = (cropToggleButton.state == NSOnState)
+        
+        makeResultImageViewFirstResponder()
+    }
+
+    @IBAction func toggleAspectRatio(_ sender: Any?) {
+
+        let lockRatio = (aspectRatioCheckBox.state == NSOnState)
+
+        switch lockRatio {
+        case true:
+            resultImageView.enableAspectRatio(sender)
+        case false:
+            resultImageView.disableAspectRatio(sender)
+        }
+
+        makeResultImageViewFirstResponder()
+    }
+
+    fileprivate func pickImage(image: NSImage) {
+
+        result = .picture(image)
+        closeSheet()
+    }
+
+    fileprivate func replaceImage(image: NSImage) {
+
+        result = .picture(image)
+        resultImageView.image = image
+        resetCropping()
+        makeResultImageViewFirstResponder()
+    }
+
+    @IBAction func applyCrop(_ sender: Any?) {
+
+        resultImageView.cropSelection(sender)
+    }
+
+    @IBAction func useImage(_ sender: Any) {
+        closeSheet()
+    }
+
+    fileprivate func resetCropping() {
+
+        isCropping = false
+    }
+
+    fileprivate func makeResultImageViewFirstResponder() {
+
+        self.window?.makeFirstResponder(resultImageView)
+    }
 
     // MARK: - Window-as-Sheet Management
 
@@ -72,12 +228,6 @@ class SnapWindowController: NSWindowController {
 
         webcam?.start()
         webcam?.showPreview(in: previewView)
-    }
-
-    func finish(image: NSImage) {
-
-        result = .picture(image)
-        closeSheet()
     }
 
     func closeSheet(returnCode: NSModalResponse = NSModalResponseOK) {

@@ -8,7 +8,17 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SnapWindowController" customModule="WebcamSnap" customModuleProvider="target">
             <connections>
+                <outlet property="applyCropButton" destination="Cnk-AA-fis" id="q0d-Iu-IFY"/>
+                <outlet property="aspectRatioCheckBox" destination="aqT-27-C1a" id="i42-je-0sa"/>
+                <outlet property="cancelTakingPictureButton" destination="OV8-1H-ktL" id="BGH-Td-WNK"/>
+                <outlet property="cancelUsingImageButton" destination="cNC-ih-PEj" id="kg0-rh-zch"/>
+                <outlet property="cropControlsView" destination="ChZ-QX-fkq" id="WZQ-LK-4VA"/>
+                <outlet property="cropToggleButton" destination="cJN-Qr-4c3" id="3yc-xP-6VV"/>
+                <outlet property="editingControlsView" destination="Fh4-qn-fyI" id="0KR-PH-1m5"/>
                 <outlet property="previewView" destination="pqd-cQ-u89" id="Kmj-D0-HB0"/>
+                <outlet property="resultImageView" destination="KQD-Sm-iA7" id="VCh-4U-fqB"/>
+                <outlet property="takePictureButton" destination="Qhc-tf-TMV" id="9PZ-xH-XpB"/>
+                <outlet property="useImageButton" destination="Y71-Qd-uUA" id="zpG-4Y-gqR"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -17,30 +27,21 @@
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+            <rect key="contentRect" x="196" y="240" width="490" height="270"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
             <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                <rect key="frame" x="0.0" y="0.0" width="490" height="270"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="KQD-Sm-iA7" customClass="CroppableImageView" customModule="WebcamSnap" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="41" width="490" height="229"/>
+                        <imageCell key="cell" enabled="NO" alignment="left" imageScaling="proportionallyUpOrDown" id="r6J-sR-YvP"/>
+                    </imageView>
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="pqd-cQ-u89">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="41" width="490" height="229"/>
                     </customView>
-                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Qhc-tf-TMV">
-                        <rect key="frame" x="182" y="13" width="115" height="32"/>
-                        <buttonCell key="cell" type="push" title="Take Picture" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ypd-Rw-mHw">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                            <string key="keyEquivalent" base64-UTF8="YES">
-DQ
-</string>
-                        </buttonCell>
-                        <connections>
-                            <action selector="snap:" target="-2" id="frE-4s-t7e"/>
-                        </connections>
-                    </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OV8-1H-ktL">
-                        <rect key="frame" x="104" y="13" width="82" height="32"/>
+                        <rect key="frame" x="107" y="64" width="82" height="32"/>
                         <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cmE-WO-VvG">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -52,16 +53,122 @@ Gw
                             <action selector="cancel:" target="-2" id="fZn-fb-KjJ"/>
                         </connections>
                     </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Qhc-tf-TMV">
+                        <rect key="frame" x="187" y="64" width="115" height="32"/>
+                        <buttonCell key="cell" type="push" title="Take Picture" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ypd-Rw-mHw">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="snap:" target="-2" id="frE-4s-t7e"/>
+                        </connections>
+                    </button>
+                    <customView hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fh4-qn-fyI" userLabel="Editing Controls">
+                        <rect key="frame" x="8" y="8" width="474" height="25"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cJN-Qr-4c3">
+                                <rect key="frame" x="0.0" y="0.0" width="40" height="25"/>
+                                <buttonCell key="cell" type="square" title="Crop" bezelStyle="shadowlessSquare" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="lYt-ab-TDt">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="toggleCrop:" target="-2" id="jZN-4Z-bfF"/>
+                                </connections>
+                            </button>
+                            <customView hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ChZ-QX-fkq" userLabel="Crop Details">
+                                <rect key="frame" x="48" y="0.0" width="221" height="25"/>
+                                <subviews>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Cnk-AA-fis">
+                                        <rect key="frame" x="119" y="-6" width="108" height="32"/>
+                                        <buttonCell key="cell" type="push" title="Apply Crop" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="VOp-Au-b8q">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="applyCrop:" target="-2" id="CUq-PD-yb2"/>
+                                        </connections>
+                                    </button>
+                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="aqT-27-C1a">
+                                        <rect key="frame" x="-2" y="3" width="119" height="18"/>
+                                        <buttonCell key="cell" type="check" title="1:1 Aspect Ratio" bezelStyle="regularSquare" imagePosition="left" enabled="NO" inset="2" id="dlV-h8-Q1U">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="toggleAspectRatio:" target="-2" id="kxW-nQ-QQl"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Cnk-AA-fis" firstAttribute="leading" secondItem="aqT-27-C1a" secondAttribute="trailing" constant="10" id="S1R-i9-fIN"/>
+                                    <constraint firstAttribute="trailing" secondItem="Cnk-AA-fis" secondAttribute="trailing" id="TNW-wz-IDe"/>
+                                    <constraint firstItem="aqT-27-C1a" firstAttribute="leading" secondItem="ChZ-QX-fkq" secondAttribute="leading" id="p4A-lu-QGQ"/>
+                                </constraints>
+                            </customView>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Y71-Qd-uUA">
+                                <rect key="frame" x="375" y="-6" width="105" height="32"/>
+                                <buttonCell key="cell" type="push" title="Use Image" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gij-si-JE7">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="useImage:" target="-2" id="RTY-1b-2Aw"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cNC-ih-PEj">
+                                <rect key="frame" x="293" y="-6" width="82" height="32"/>
+                                <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="leI-vb-d2t">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="cancel:" target="-2" id="gt8-1C-Vgw"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="Y71-Qd-uUA" firstAttribute="baseline" secondItem="cJN-Qr-4c3" secondAttribute="baseline" id="8uz-JT-Eoj"/>
+                            <constraint firstItem="cJN-Qr-4c3" firstAttribute="leading" secondItem="Fh4-qn-fyI" secondAttribute="leading" id="GgK-Lo-cRe"/>
+                            <constraint firstItem="Cnk-AA-fis" firstAttribute="baseline" secondItem="cJN-Qr-4c3" secondAttribute="baseline" id="JBO-Tj-WSO"/>
+                            <constraint firstAttribute="trailing" secondItem="Y71-Qd-uUA" secondAttribute="trailing" id="UFS-oW-pi0"/>
+                            <constraint firstItem="ChZ-QX-fkq" firstAttribute="leading" secondItem="cJN-Qr-4c3" secondAttribute="trailing" constant="8" id="UFn-EO-f1D"/>
+                            <constraint firstItem="aqT-27-C1a" firstAttribute="baseline" secondItem="cJN-Qr-4c3" secondAttribute="baseline" id="Y2F-Gr-udv"/>
+                            <constraint firstItem="cNC-ih-PEj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Cnk-AA-fis" secondAttribute="trailing" constant="30" id="a9O-11-sQr"/>
+                            <constraint firstAttribute="bottom" secondItem="ChZ-QX-fkq" secondAttribute="bottom" id="eYn-Ln-Oun"/>
+                            <constraint firstAttribute="bottom" secondItem="cJN-Qr-4c3" secondAttribute="bottom" id="g5j-oO-hz4"/>
+                            <constraint firstItem="ChZ-QX-fkq" firstAttribute="top" secondItem="Fh4-qn-fyI" secondAttribute="top" id="mcl-vN-WMl"/>
+                            <constraint firstItem="cJN-Qr-4c3" firstAttribute="top" secondItem="Fh4-qn-fyI" secondAttribute="top" id="nyn-5T-E6c"/>
+                            <constraint firstItem="Y71-Qd-uUA" firstAttribute="leading" secondItem="cNC-ih-PEj" secondAttribute="trailing" constant="12" id="tGx-EZ-agB"/>
+                            <constraint firstItem="cNC-ih-PEj" firstAttribute="baseline" secondItem="Y71-Qd-uUA" secondAttribute="baseline" id="xQh-e3-2cw"/>
+                        </constraints>
+                    </customView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="pqd-cQ-u89" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" id="0UK-TO-ZfK"/>
-                    <constraint firstItem="OV8-1H-ktL" firstAttribute="centerY" secondItem="Qhc-tf-TMV" secondAttribute="centerY" id="CXM-in-7Qy"/>
+                    <constraint firstItem="Fh4-qn-fyI" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="8" id="DhH-yz-ZMV"/>
                     <constraint firstItem="pqd-cQ-u89" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" id="FCx-QO-n6w"/>
-                    <constraint firstItem="Qhc-tf-TMV" firstAttribute="centerX" secondItem="se5-gp-TjO" secondAttribute="centerX" id="GpA-ox-P62"/>
+                    <constraint firstItem="KQD-Sm-iA7" firstAttribute="top" secondItem="pqd-cQ-u89" secondAttribute="top" id="HxB-5d-G2d"/>
+                    <constraint firstItem="Fh4-qn-fyI" firstAttribute="top" secondItem="pqd-cQ-u89" secondAttribute="bottom" constant="8" id="J1J-q0-7fq"/>
+                    <constraint firstAttribute="bottom" secondItem="Fh4-qn-fyI" secondAttribute="bottom" constant="8" id="KG8-l3-pAd"/>
                     <constraint firstAttribute="trailing" secondItem="pqd-cQ-u89" secondAttribute="trailing" id="MSr-P7-Etb"/>
-                    <constraint firstAttribute="bottom" secondItem="pqd-cQ-u89" secondAttribute="bottom" id="P2N-tF-VBd"/>
-                    <constraint firstItem="Qhc-tf-TMV" firstAttribute="leading" secondItem="OV8-1H-ktL" secondAttribute="trailing" constant="8" id="ZbL-zJ-jfC"/>
-                    <constraint firstAttribute="bottom" secondItem="Qhc-tf-TMV" secondAttribute="bottom" constant="20" id="f5R-jV-AUn"/>
+                    <constraint firstItem="KQD-Sm-iA7" firstAttribute="bottom" secondItem="pqd-cQ-u89" secondAttribute="bottom" id="Wmu-jF-spm"/>
+                    <constraint firstItem="Qhc-tf-TMV" firstAttribute="bottom" secondItem="pqd-cQ-u89" secondAttribute="bottom" constant="-30" id="Wnd-0e-45j"/>
+                    <constraint firstItem="Qhc-tf-TMV" firstAttribute="leading" secondItem="OV8-1H-ktL" secondAttribute="trailing" constant="10" id="YVg-Oy-wUm"/>
+                    <constraint firstItem="OV8-1H-ktL" firstAttribute="baseline" secondItem="Qhc-tf-TMV" secondAttribute="baseline" id="idr-Ah-DSA"/>
+                    <constraint firstItem="Qhc-tf-TMV" firstAttribute="centerX" secondItem="pqd-cQ-u89" secondAttribute="centerX" id="k5F-ZO-aj1"/>
+                    <constraint firstAttribute="trailing" secondItem="Fh4-qn-fyI" secondAttribute="trailing" constant="8" id="oIG-aU-yEW"/>
+                    <constraint firstItem="KQD-Sm-iA7" firstAttribute="trailing" secondItem="pqd-cQ-u89" secondAttribute="trailing" id="xbF-dX-U1A"/>
+                    <constraint firstItem="KQD-Sm-iA7" firstAttribute="leading" secondItem="pqd-cQ-u89" secondAttribute="leading" id="xxZ-wY-zf9"/>
                 </constraints>
             </view>
             <connections>
