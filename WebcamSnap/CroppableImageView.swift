@@ -7,6 +7,7 @@ public class CroppableImageView: NSImageView {
     public var abortCropping: (() -> Void)?
     public var crop: ((NSImage) -> Void)?
     public var pick: ((NSImage) -> Void)?
+    public var cancel: (() -> Void)?
 
     public override var acceptsFirstResponder: Bool { return true }
 
@@ -78,6 +79,8 @@ public class CroppableImageView: NSImageView {
         guard didHandleEvent else { super.keyDown(with: event); return }
     }
 
+    fileprivate var isCropping: Bool { return cropMarker != nil }
+
     @discardableResult
     fileprivate func handleEnter(event: NSEvent) -> Bool {
 
@@ -87,7 +90,7 @@ public class CroppableImageView: NSImageView {
             event.keyCode == 76
             else { return false }
 
-        guard self.cropMarker != nil else {
+        guard isCropping else {
             return handlePicking(image: image)
         }
 
@@ -161,7 +164,7 @@ public class CroppableImageView: NSImageView {
     @discardableResult
     fileprivate func handleEscape(event: NSEvent) -> Bool {
 
-        guard let abortCropping = self.abortCropping,
+        guard
             // Escape Key
             event.keyCode == 53
             // ⌘.
@@ -169,10 +172,31 @@ public class CroppableImageView: NSImageView {
                 && event.modifierFlags.contains(.command))
             else { return false }
 
-        abortCropping()
+        guard isCropping else {
+            return handleCanceling()
+        }
+
+        return handleAbortingCropping()
+    }
+
+    @discardableResult
+    fileprivate func handleCanceling() -> Bool {
+
+        guard let cancel = self.cancel else { return false }
+
+        cancel()
         return true
     }
 
+    @discardableResult
+    fileprivate func handleAbortingCropping() -> Bool {
+
+        guard let abortCropping = self.abortCropping else { return false }
+
+        abortCropping()
+        return true
+    }
+    
     @discardableResult
     fileprivate func handleSelectAll(event: NSEvent) -> Bool {
 

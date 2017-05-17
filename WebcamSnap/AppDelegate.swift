@@ -18,13 +18,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     // MARK: -
 
-    lazy var snapPicture: SnapPicture = SnapPicture()
+    var snapPicture: SnapPicture!
     @IBOutlet weak var resultImageView: CroppableImageView!
     @IBOutlet weak var placeholderLabel: NSTextField!
 
     @IBAction func newSnap(_ sender: Any?) {
 
-        snapPicture.showSheet(hostingWindow: window) { result in
+        self.snapPicture = SnapPicture()
+        self.snapPicture.showSheet(hostingWindow: window) { result in
             switch result {
             case .cancel: break
             case .error(let error): print("error taking picture: \(error)")
