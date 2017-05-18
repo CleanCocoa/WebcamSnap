@@ -27,21 +27,21 @@
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="490" height="270"/>
+            <rect key="contentRect" x="196" y="240" width="490" height="328"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
             <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="490" height="270"/>
+                <rect key="frame" x="0.0" y="0.0" width="490" height="328"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="KQD-Sm-iA7" customClass="CroppableImageView" customModule="WebcamSnap" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="41" width="490" height="229"/>
+                        <rect key="frame" x="-1" y="38" width="490" height="291"/>
                         <imageCell key="cell" enabled="NO" alignment="left" imageScaling="proportionallyUpOrDown" id="r6J-sR-YvP"/>
                     </imageView>
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="pqd-cQ-u89">
-                        <rect key="frame" x="0.0" y="41" width="490" height="229"/>
+                        <rect key="frame" x="0.0" y="38" width="490" height="290"/>
                     </customView>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OV8-1H-ktL">
-                        <rect key="frame" x="107" y="64" width="82" height="32"/>
+                        <rect key="frame" x="107" y="21" width="82" height="32"/>
                         <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cmE-WO-VvG">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -54,7 +54,7 @@ Gw
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Qhc-tf-TMV">
-                        <rect key="frame" x="187" y="64" width="115" height="32"/>
+                        <rect key="frame" x="187" y="21" width="115" height="32"/>
                         <buttonCell key="cell" type="push" title="Take Picture" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ypd-Rw-mHw">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -67,20 +67,21 @@ DQ
                         </connections>
                     </button>
                     <customView hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fh4-qn-fyI" userLabel="Editing Controls">
-                        <rect key="frame" x="8" y="8" width="474" height="25"/>
+                        <rect key="frame" x="8" y="8" width="474" height="22"/>
                         <subviews>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cJN-Qr-4c3">
-                                <rect key="frame" x="0.0" y="0.0" width="40" height="25"/>
-                                <buttonCell key="cell" type="square" title="Crop" bezelStyle="shadowlessSquare" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="lYt-ab-TDt">
+                                <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="crop-sm" imagePosition="only" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="lYt-ab-TDt">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <accessibility description="Crop"/>
                                 <connections>
                                     <action selector="toggleCrop:" target="-2" id="jZN-4Z-bfF"/>
                                 </connections>
                             </button>
                             <customView hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ChZ-QX-fkq" userLabel="Crop Details">
-                                <rect key="frame" x="48" y="0.0" width="221" height="25"/>
+                                <rect key="frame" x="30" y="0.0" width="221" height="22"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Cnk-AA-fis">
                                         <rect key="frame" x="119" y="-6" width="108" height="32"/>
@@ -157,23 +158,27 @@ Gw
                     <constraint firstItem="pqd-cQ-u89" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" id="0UK-TO-ZfK"/>
                     <constraint firstItem="Fh4-qn-fyI" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="8" id="DhH-yz-ZMV"/>
                     <constraint firstItem="pqd-cQ-u89" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" id="FCx-QO-n6w"/>
-                    <constraint firstItem="KQD-Sm-iA7" firstAttribute="top" secondItem="pqd-cQ-u89" secondAttribute="top" id="HxB-5d-G2d"/>
+                    <constraint firstItem="KQD-Sm-iA7" firstAttribute="top" secondItem="pqd-cQ-u89" secondAttribute="top" constant="-1" id="HxB-5d-G2d"/>
                     <constraint firstItem="Fh4-qn-fyI" firstAttribute="top" secondItem="pqd-cQ-u89" secondAttribute="bottom" constant="8" id="J1J-q0-7fq"/>
                     <constraint firstAttribute="bottom" secondItem="Fh4-qn-fyI" secondAttribute="bottom" constant="8" id="KG8-l3-pAd"/>
                     <constraint firstAttribute="trailing" secondItem="pqd-cQ-u89" secondAttribute="trailing" id="MSr-P7-Etb"/>
                     <constraint firstItem="KQD-Sm-iA7" firstAttribute="bottom" secondItem="pqd-cQ-u89" secondAttribute="bottom" id="Wmu-jF-spm"/>
-                    <constraint firstItem="Qhc-tf-TMV" firstAttribute="bottom" secondItem="pqd-cQ-u89" secondAttribute="bottom" constant="-30" id="Wnd-0e-45j"/>
+                    <constraint firstItem="Qhc-tf-TMV" firstAttribute="bottom" secondItem="pqd-cQ-u89" secondAttribute="bottom" constant="10" id="Wnd-0e-45j"/>
                     <constraint firstItem="Qhc-tf-TMV" firstAttribute="leading" secondItem="OV8-1H-ktL" secondAttribute="trailing" constant="10" id="YVg-Oy-wUm"/>
                     <constraint firstItem="OV8-1H-ktL" firstAttribute="baseline" secondItem="Qhc-tf-TMV" secondAttribute="baseline" id="idr-Ah-DSA"/>
                     <constraint firstItem="Qhc-tf-TMV" firstAttribute="centerX" secondItem="pqd-cQ-u89" secondAttribute="centerX" id="k5F-ZO-aj1"/>
                     <constraint firstAttribute="trailing" secondItem="Fh4-qn-fyI" secondAttribute="trailing" constant="8" id="oIG-aU-yEW"/>
-                    <constraint firstItem="KQD-Sm-iA7" firstAttribute="trailing" secondItem="pqd-cQ-u89" secondAttribute="trailing" id="xbF-dX-U1A"/>
-                    <constraint firstItem="KQD-Sm-iA7" firstAttribute="leading" secondItem="pqd-cQ-u89" secondAttribute="leading" id="xxZ-wY-zf9"/>
+                    <constraint firstItem="KQD-Sm-iA7" firstAttribute="trailing" secondItem="pqd-cQ-u89" secondAttribute="trailing" constant="-1" id="xbF-dX-U1A"/>
+                    <constraint firstItem="KQD-Sm-iA7" firstAttribute="leading" secondItem="pqd-cQ-u89" secondAttribute="leading" constant="-1" id="xxZ-wY-zf9"/>
                 </constraints>
             </view>
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
+            <point key="canvasLocation" x="139" y="191"/>
         </window>
     </objects>
+    <resources>
+        <image name="crop-sm" width="16" height="16"/>
+    </resources>
 </document>

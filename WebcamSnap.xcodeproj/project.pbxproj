@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5044C5361ECD678800F59417 /* LICENSE.md in Sources */ = {isa = PBXBuildFile; fileRef = 5044C5351ECD678800F59417 /* LICENSE.md */; };
 		5091E5931ECC17710069926B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5091E5921ECC17710069926B /* AppDelegate.swift */; };
 		5091E5951ECC17710069926B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5091E5941ECC17710069926B /* Assets.xcassets */; };
 		5091E5981ECC17710069926B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5091E5961ECC17710069926B /* MainMenu.xib */; };
@@ -30,6 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5044C5351ECD678800F59417 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
 		5091E58F1ECC17710069926B /* WebcamSnap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WebcamSnap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5091E5921ECC17710069926B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5091E5941ECC17710069926B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				5091E5B91ECC39780069926B /* SnapPicture.swift */,
 				5091E5C41ECC7A790069926B /* Croppable Image */,
 				5091E5C51ECC7A820069926B /* Webcam Snapping */,
+				5044C5351ECD678800F59417 /* LICENSE.md */,
 			);
 			name = Snap;
 			sourceTree = "<group>";
@@ -248,6 +251,7 @@
 				5091E5B11ECC187C0069926B /* SnapWindowController.swift in Sources */,
 				5091E5BA1ECC39780069926B /* SnapPicture.swift in Sources */,
 				5091E5B41ECC26320069926B /* Webcam.swift in Sources */,
+				5044C5361ECD678800F59417 /* LICENSE.md in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
