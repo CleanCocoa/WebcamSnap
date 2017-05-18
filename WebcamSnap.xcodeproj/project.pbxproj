@@ -7,72 +7,168 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5044C5361ECD678800F59417 /* LICENSE.md in Sources */ = {isa = PBXBuildFile; fileRef = 5044C5351ECD678800F59417 /* LICENSE.md */; };
+		5044C5451ECD68A100F59417 /* WebcamSnap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5044C53C1ECD68A000F59417 /* WebcamSnap.framework */; };
+		5044C54C1ECD68A100F59417 /* WebcamSnapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5044C54B1ECD68A100F59417 /* WebcamSnapTests.swift */; };
+		5044C5511ECD68A100F59417 /* WebcamSnap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5044C53C1ECD68A000F59417 /* WebcamSnap.framework */; };
+		5044C5521ECD68A100F59417 /* WebcamSnap.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5044C53C1ECD68A000F59417 /* WebcamSnap.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5044C55D1ECD68E100F59417 /* SnapWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5044C55A1ECD68E100F59417 /* SnapWindowController.swift */; };
+		5044C55E1ECD68E100F59417 /* SnapWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5044C55B1ECD68E100F59417 /* SnapWindowController.xib */; };
+		5044C55F1ECD68E100F59417 /* Webcam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5044C55C1ECD68E100F59417 /* Webcam.swift */; };
+		5044C5641ECD68FC00F59417 /* CroppableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5044C5611ECD68FC00F59417 /* CroppableImageView.swift */; };
+		5044C5651ECD68FC00F59417 /* SCSelectionBorder.h in Headers */ = {isa = PBXBuildFile; fileRef = 5044C5621ECD68FC00F59417 /* SCSelectionBorder.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		5044C5661ECD68FC00F59417 /* SCSelectionBorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5044C5631ECD68FC00F59417 /* SCSelectionBorder.m */; };
+		5044C5691ECD691000F59417 /* SnapPicture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5044C5681ECD691000F59417 /* SnapPicture.swift */; };
+		5044C56B1ECD695E00F59417 /* String+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5044C56A1ECD695E00F59417 /* String+Error.swift */; };
+		506C14351ECD6EAB0088C809 /* crop-sm.png in Resources */ = {isa = PBXBuildFile; fileRef = 506C14341ECD6EAB0088C809 /* crop-sm.png */; };
+		506C14371ECD6EB60088C809 /* crop-sm-@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 506C14361ECD6EB60088C809 /* crop-sm-@2x.png */; };
 		5091E5931ECC17710069926B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5091E5921ECC17710069926B /* AppDelegate.swift */; };
 		5091E5951ECC17710069926B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5091E5941ECC17710069926B /* Assets.xcassets */; };
 		5091E5981ECC17710069926B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5091E5961ECC17710069926B /* MainMenu.xib */; };
-		5091E5A31ECC17710069926B /* WebcamSnapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5091E5A21ECC17710069926B /* WebcamSnapTests.swift */; };
-		5091E5B11ECC187C0069926B /* SnapWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5091E5AF1ECC187C0069926B /* SnapWindowController.swift */; };
-		5091E5B21ECC187C0069926B /* SnapWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5091E5B01ECC187C0069926B /* SnapWindowController.xib */; };
-		5091E5B41ECC26320069926B /* Webcam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5091E5B31ECC26320069926B /* Webcam.swift */; };
-		5091E5BA1ECC39780069926B /* SnapPicture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5091E5B91ECC39780069926B /* SnapPicture.swift */; };
-		5091E5BF1ECC4C490069926B /* CroppableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5091E5BE1ECC4C490069926B /* CroppableImageView.swift */; };
-		5091E5C31ECC4D4B0069926B /* SCSelectionBorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5091E5C21ECC4D4B0069926B /* SCSelectionBorder.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		5091E59F1ECC17710069926B /* PBXContainerItemProxy */ = {
+		5044C5461ECD68A100F59417 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5091E5871ECC17710069926B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5044C53B1ECD68A000F59417;
+			remoteInfo = WebcamSnap;
+		};
+		5044C5481ECD68A100F59417 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5091E5871ECC17710069926B /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 5091E58E1ECC17710069926B;
+			remoteInfo = "WebcamSnap-Example";
+		};
+		5044C54F1ECD68A100F59417 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5091E5871ECC17710069926B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5044C53B1ECD68A000F59417;
 			remoteInfo = WebcamSnap;
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		5044C5561ECD68A100F59417 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				5044C5521ECD68A100F59417 /* WebcamSnap.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		5044C5351ECD678800F59417 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
-		5091E58F1ECC17710069926B /* WebcamSnap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WebcamSnap.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5044C53C1ECD68A000F59417 /* WebcamSnap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WebcamSnap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5044C53F1ECD68A100F59417 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5044C5441ECD68A100F59417 /* WebcamSnapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WebcamSnapTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5044C54B1ECD68A100F59417 /* WebcamSnapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebcamSnapTests.swift; sourceTree = "<group>"; };
+		5044C54D1ECD68A100F59417 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5044C55A1ECD68E100F59417 /* SnapWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapWindowController.swift; sourceTree = "<group>"; };
+		5044C55B1ECD68E100F59417 /* SnapWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SnapWindowController.xib; sourceTree = "<group>"; };
+		5044C55C1ECD68E100F59417 /* Webcam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Webcam.swift; sourceTree = "<group>"; };
+		5044C5611ECD68FC00F59417 /* CroppableImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CroppableImageView.swift; sourceTree = "<group>"; };
+		5044C5621ECD68FC00F59417 /* SCSelectionBorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSelectionBorder.h; sourceTree = "<group>"; };
+		5044C5631ECD68FC00F59417 /* SCSelectionBorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCSelectionBorder.m; sourceTree = "<group>"; };
+		5044C5681ECD691000F59417 /* SnapPicture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapPicture.swift; sourceTree = "<group>"; };
+		5044C56A1ECD695E00F59417 /* String+Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Error.swift"; sourceTree = "<group>"; };
+		5044C56C1ECD698600F59417 /* WebcamSnap-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WebcamSnap-Bridging-Header.h"; sourceTree = "<group>"; };
+		506C14341ECD6EAB0088C809 /* crop-sm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "crop-sm.png"; sourceTree = "<group>"; };
+		506C14361ECD6EB60088C809 /* crop-sm-@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "crop-sm-@2x.png"; sourceTree = "<group>"; };
+		506C14381ECD72F10088C809 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		5091E58F1ECC17710069926B /* WebcamSnap-Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WebcamSnap-Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5091E5921ECC17710069926B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5091E5941ECC17710069926B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5091E5971ECC17710069926B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		5091E5991ECC17710069926B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5091E59E1ECC17710069926B /* WebcamSnapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WebcamSnapTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		5091E5A21ECC17710069926B /* WebcamSnapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebcamSnapTests.swift; sourceTree = "<group>"; };
-		5091E5A41ECC17710069926B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5091E5AF1ECC187C0069926B /* SnapWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapWindowController.swift; sourceTree = "<group>"; };
-		5091E5B01ECC187C0069926B /* SnapWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SnapWindowController.xib; sourceTree = "<group>"; };
-		5091E5B31ECC26320069926B /* Webcam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Webcam.swift; sourceTree = "<group>"; };
-		5091E5B91ECC39780069926B /* SnapPicture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapPicture.swift; sourceTree = "<group>"; };
-		5091E5BE1ECC4C490069926B /* CroppableImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CroppableImageView.swift; sourceTree = "<group>"; };
-		5091E5C01ECC4D4A0069926B /* WebcamSnap-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WebcamSnap-Bridging-Header.h"; sourceTree = "<group>"; };
-		5091E5C11ECC4D4B0069926B /* SCSelectionBorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSelectionBorder.h; sourceTree = "<group>"; };
-		5091E5C21ECC4D4B0069926B /* SCSelectionBorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCSelectionBorder.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		5091E58C1ECC17710069926B /* Frameworks */ = {
+		5044C5381ECD68A000F59417 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5091E59B1ECC17710069926B /* Frameworks */ = {
+		5044C5411ECD68A100F59417 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5044C5451ECD68A100F59417 /* WebcamSnap.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5091E58C1ECC17710069926B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5044C5511ECD68A100F59417 /* WebcamSnap.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5044C53D1ECD68A100F59417 /* WebcamSnap */ = {
+			isa = PBXGroup;
+			children = (
+				5044C5681ECD691000F59417 /* SnapPicture.swift */,
+				5044C56A1ECD695E00F59417 /* String+Error.swift */,
+				5044C5601ECD68E900F59417 /* Snapping Window */,
+				5044C5671ECD690100F59417 /* Croppable Image */,
+				506C14341ECD6EAB0088C809 /* crop-sm.png */,
+				506C14361ECD6EB60088C809 /* crop-sm-@2x.png */,
+				5044C56C1ECD698600F59417 /* WebcamSnap-Bridging-Header.h */,
+				5044C53F1ECD68A100F59417 /* Info.plist */,
+			);
+			path = WebcamSnap;
+			sourceTree = "<group>";
+		};
+		5044C54A1ECD68A100F59417 /* WebcamSnapTests */ = {
+			isa = PBXGroup;
+			children = (
+				5044C54B1ECD68A100F59417 /* WebcamSnapTests.swift */,
+				5044C54D1ECD68A100F59417 /* Info.plist */,
+			);
+			path = WebcamSnapTests;
+			sourceTree = "<group>";
+		};
+		5044C5601ECD68E900F59417 /* Snapping Window */ = {
+			isa = PBXGroup;
+			children = (
+				5044C55A1ECD68E100F59417 /* SnapWindowController.swift */,
+				5044C55B1ECD68E100F59417 /* SnapWindowController.xib */,
+				5044C55C1ECD68E100F59417 /* Webcam.swift */,
+			);
+			name = "Snapping Window";
+			sourceTree = "<group>";
+		};
+		5044C5671ECD690100F59417 /* Croppable Image */ = {
+			isa = PBXGroup;
+			children = (
+				5044C5611ECD68FC00F59417 /* CroppableImageView.swift */,
+				5044C5621ECD68FC00F59417 /* SCSelectionBorder.h */,
+				5044C5631ECD68FC00F59417 /* SCSelectionBorder.m */,
+			);
+			name = "Croppable Image";
+			sourceTree = "<group>";
+		};
 		5091E5861ECC17710069926B = {
 			isa = PBXGroup;
 			children = (
-				5091E5911ECC17710069926B /* WebcamSnap */,
-				5091E5A11ECC17710069926B /* WebcamSnapTests */,
+				506C14381ECD72F10088C809 /* README.md */,
+				5044C5351ECD678800F59417 /* LICENSE.md */,
+				5091E5911ECC17710069926B /* Example */,
+				5044C53D1ECD68A100F59417 /* WebcamSnap */,
+				5044C54A1ECD68A100F59417 /* WebcamSnapTests */,
 				5091E5901ECC17710069926B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -80,75 +176,47 @@
 		5091E5901ECC17710069926B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5091E58F1ECC17710069926B /* WebcamSnap.app */,
-				5091E59E1ECC17710069926B /* WebcamSnapTests.xctest */,
+				5091E58F1ECC17710069926B /* WebcamSnap-Example.app */,
+				5044C53C1ECD68A000F59417 /* WebcamSnap.framework */,
+				5044C5441ECD68A100F59417 /* WebcamSnapTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		5091E5911ECC17710069926B /* WebcamSnap */ = {
+		5091E5911ECC17710069926B /* Example */ = {
 			isa = PBXGroup;
 			children = (
 				5091E5921ECC17710069926B /* AppDelegate.swift */,
 				5091E5941ECC17710069926B /* Assets.xcassets */,
 				5091E5961ECC17710069926B /* MainMenu.xib */,
 				5091E5991ECC17710069926B /* Info.plist */,
-				5091E5C01ECC4D4A0069926B /* WebcamSnap-Bridging-Header.h */,
-				5091E5AE1ECC18700069926B /* Snap */,
 			);
-			path = WebcamSnap;
-			sourceTree = "<group>";
-		};
-		5091E5A11ECC17710069926B /* WebcamSnapTests */ = {
-			isa = PBXGroup;
-			children = (
-				5091E5A21ECC17710069926B /* WebcamSnapTests.swift */,
-				5091E5A41ECC17710069926B /* Info.plist */,
-			);
-			path = WebcamSnapTests;
-			sourceTree = "<group>";
-		};
-		5091E5AE1ECC18700069926B /* Snap */ = {
-			isa = PBXGroup;
-			children = (
-				5091E5B91ECC39780069926B /* SnapPicture.swift */,
-				5091E5C41ECC7A790069926B /* Croppable Image */,
-				5091E5C51ECC7A820069926B /* Webcam Snapping */,
-				5044C5351ECD678800F59417 /* LICENSE.md */,
-			);
-			name = Snap;
-			sourceTree = "<group>";
-		};
-		5091E5C41ECC7A790069926B /* Croppable Image */ = {
-			isa = PBXGroup;
-			children = (
-				5091E5BE1ECC4C490069926B /* CroppableImageView.swift */,
-				5091E5C11ECC4D4B0069926B /* SCSelectionBorder.h */,
-				5091E5C21ECC4D4B0069926B /* SCSelectionBorder.m */,
-			);
-			name = "Croppable Image";
-			sourceTree = "<group>";
-		};
-		5091E5C51ECC7A820069926B /* Webcam Snapping */ = {
-			isa = PBXGroup;
-			children = (
-				5091E5AF1ECC187C0069926B /* SnapWindowController.swift */,
-				5091E5B01ECC187C0069926B /* SnapWindowController.xib */,
-				5091E5B31ECC26320069926B /* Webcam.swift */,
-			);
-			name = "Webcam Snapping";
+			name = Example;
+			path = "WebcamSnap-Example";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		5044C5391ECD68A000F59417 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5044C5651ECD68FC00F59417 /* SCSelectionBorder.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
-		5091E58E1ECC17710069926B /* WebcamSnap */ = {
+		5044C53B1ECD68A000F59417 /* WebcamSnap */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5091E5A71ECC17710069926B /* Build configuration list for PBXNativeTarget "WebcamSnap" */;
+			buildConfigurationList = 5044C5531ECD68A100F59417 /* Build configuration list for PBXNativeTarget "WebcamSnap" */;
 			buildPhases = (
-				5091E58B1ECC17710069926B /* Sources */,
-				5091E58C1ECC17710069926B /* Frameworks */,
-				5091E58D1ECC17710069926B /* Resources */,
+				5044C5371ECD68A000F59417 /* Sources */,
+				5044C5381ECD68A000F59417 /* Frameworks */,
+				5044C5391ECD68A000F59417 /* Headers */,
+				5044C53A1ECD68A000F59417 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -156,26 +224,46 @@
 			);
 			name = WebcamSnap;
 			productName = WebcamSnap;
-			productReference = 5091E58F1ECC17710069926B /* WebcamSnap.app */;
-			productType = "com.apple.product-type.application";
+			productReference = 5044C53C1ECD68A000F59417 /* WebcamSnap.framework */;
+			productType = "com.apple.product-type.framework";
 		};
-		5091E59D1ECC17710069926B /* WebcamSnapTests */ = {
+		5044C5431ECD68A100F59417 /* WebcamSnapTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5091E5AA1ECC17710069926B /* Build configuration list for PBXNativeTarget "WebcamSnapTests" */;
+			buildConfigurationList = 5044C5571ECD68A100F59417 /* Build configuration list for PBXNativeTarget "WebcamSnapTests" */;
 			buildPhases = (
-				5091E59A1ECC17710069926B /* Sources */,
-				5091E59B1ECC17710069926B /* Frameworks */,
-				5091E59C1ECC17710069926B /* Resources */,
+				5044C5401ECD68A100F59417 /* Sources */,
+				5044C5411ECD68A100F59417 /* Frameworks */,
+				5044C5421ECD68A100F59417 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				5091E5A01ECC17710069926B /* PBXTargetDependency */,
+				5044C5471ECD68A100F59417 /* PBXTargetDependency */,
+				5044C5491ECD68A100F59417 /* PBXTargetDependency */,
 			);
 			name = WebcamSnapTests;
 			productName = WebcamSnapTests;
-			productReference = 5091E59E1ECC17710069926B /* WebcamSnapTests.xctest */;
+			productReference = 5044C5441ECD68A100F59417 /* WebcamSnapTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		5091E58E1ECC17710069926B /* WebcamSnap-Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5091E5A71ECC17710069926B /* Build configuration list for PBXNativeTarget "WebcamSnap-Example" */;
+			buildPhases = (
+				5091E58B1ECC17710069926B /* Sources */,
+				5091E58C1ECC17710069926B /* Frameworks */,
+				5091E58D1ECC17710069926B /* Resources */,
+				5044C5561ECD68A100F59417 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5044C5501ECD68A100F59417 /* PBXTargetDependency */,
+			);
+			name = "WebcamSnap-Example";
+			productName = WebcamSnap;
+			productReference = 5091E58F1ECC17710069926B /* WebcamSnap-Example.app */;
+			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
@@ -187,17 +275,23 @@
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Christian Tietze";
 				TargetAttributes = {
-					5091E58E1ECC17710069926B = {
+					5044C53B1ECD68A000F59417 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = FRMDA3XRGC;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
-					5091E59D1ECC17710069926B = {
+					5044C5431ECD68A100F59417 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = FRMDA3XRGC;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 5091E58E1ECC17710069926B;
+					};
+					5091E58E1ECC17710069926B = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = FRMDA3XRGC;
+						LastSwiftMigration = 0820;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -214,62 +308,89 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5091E58E1ECC17710069926B /* WebcamSnap */,
-				5091E59D1ECC17710069926B /* WebcamSnapTests */,
+				5091E58E1ECC17710069926B /* WebcamSnap-Example */,
+				5044C53B1ECD68A000F59417 /* WebcamSnap */,
+				5044C5431ECD68A100F59417 /* WebcamSnapTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5044C53A1ECD68A000F59417 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5044C55E1ECD68E100F59417 /* SnapWindowController.xib in Resources */,
+				506C14371ECD6EB60088C809 /* crop-sm-@2x.png in Resources */,
+				506C14351ECD6EAB0088C809 /* crop-sm.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5044C5421ECD68A100F59417 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5091E58D1ECC17710069926B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				5091E5951ECC17710069926B /* Assets.xcassets in Resources */,
 				5091E5981ECC17710069926B /* MainMenu.xib in Resources */,
-				5091E5B21ECC187C0069926B /* SnapWindowController.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5091E59C1ECC17710069926B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5044C5371ECD68A000F59417 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5044C5661ECD68FC00F59417 /* SCSelectionBorder.m in Sources */,
+				5044C56B1ECD695E00F59417 /* String+Error.swift in Sources */,
+				5044C55F1ECD68E100F59417 /* Webcam.swift in Sources */,
+				5044C5641ECD68FC00F59417 /* CroppableImageView.swift in Sources */,
+				5044C55D1ECD68E100F59417 /* SnapWindowController.swift in Sources */,
+				5044C5691ECD691000F59417 /* SnapPicture.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5044C5401ECD68A100F59417 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5044C54C1ECD68A100F59417 /* WebcamSnapTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5091E58B1ECC17710069926B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5091E5C31ECC4D4B0069926B /* SCSelectionBorder.m in Sources */,
-				5091E5BF1ECC4C490069926B /* CroppableImageView.swift in Sources */,
 				5091E5931ECC17710069926B /* AppDelegate.swift in Sources */,
-				5091E5B11ECC187C0069926B /* SnapWindowController.swift in Sources */,
-				5091E5BA1ECC39780069926B /* SnapPicture.swift in Sources */,
-				5091E5B41ECC26320069926B /* Webcam.swift in Sources */,
-				5044C5361ECD678800F59417 /* LICENSE.md in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5091E59A1ECC17710069926B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5091E5A31ECC17710069926B /* WebcamSnapTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		5091E5A01ECC17710069926B /* PBXTargetDependency */ = {
+		5044C5471ECD68A100F59417 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 5091E58E1ECC17710069926B /* WebcamSnap */;
-			targetProxy = 5091E59F1ECC17710069926B /* PBXContainerItemProxy */;
+			target = 5044C53B1ECD68A000F59417 /* WebcamSnap */;
+			targetProxy = 5044C5461ECD68A100F59417 /* PBXContainerItemProxy */;
+		};
+		5044C5491ECD68A100F59417 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5091E58E1ECC17710069926B /* WebcamSnap-Example */;
+			targetProxy = 5044C5481ECD68A100F59417 /* PBXContainerItemProxy */;
+		};
+		5044C5501ECD68A100F59417 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5044C53B1ECD68A000F59417 /* WebcamSnap */;
+			targetProxy = 5044C54F1ECD68A100F59417 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -285,6 +406,89 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		5044C5541ECD68A100F59417 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = FRMDA3XRGC;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = WebcamSnap/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = de.christiantietze.WebcamSnap;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "WebcamSnap/WebcamSnap-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		5044C5551ECD68A100F59417 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = FRMDA3XRGC;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = WebcamSnap/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = de.christiantietze.WebcamSnap;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "WebcamSnap/WebcamSnap-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		5044C5581ECD68A100F59417 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = FRMDA3XRGC;
+				INFOPLIST_FILE = WebcamSnapTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = de.christiantietze.WebcamSnapTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WebcamSnap-Example.app/Contents/MacOS/WebcamSnap-Example";
+			};
+			name = Debug;
+		};
+		5044C5591ECD68A100F59417 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = FRMDA3XRGC;
+				INFOPLIST_FILE = WebcamSnapTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = de.christiantietze.WebcamSnapTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WebcamSnap-Example.app/Contents/MacOS/WebcamSnap-Example";
+			};
+			name = Release;
+		};
 		5091E5A51ECC17710069926B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -378,15 +582,15 @@
 		5091E5A81ECC17710069926B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = FRMDA3XRGC;
-				INFOPLIST_FILE = WebcamSnap/Info.plist;
+				INFOPLIST_FILE = "WebcamSnap-Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.christiantietze.WebcamSnap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "WebcamSnap/WebcamSnap-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
@@ -395,54 +599,40 @@
 		5091E5A91ECC17710069926B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = FRMDA3XRGC;
-				INFOPLIST_FILE = WebcamSnap/Info.plist;
+				INFOPLIST_FILE = "WebcamSnap-Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.christiantietze.WebcamSnap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "WebcamSnap/WebcamSnap-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
-			};
-			name = Release;
-		};
-		5091E5AB1ECC17710069926B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = FRMDA3XRGC;
-				INFOPLIST_FILE = WebcamSnapTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = de.christiantietze.WebcamSnapTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WebcamSnap.app/Contents/MacOS/WebcamSnap";
-			};
-			name = Debug;
-		};
-		5091E5AC1ECC17710069926B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = FRMDA3XRGC;
-				INFOPLIST_FILE = WebcamSnapTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = de.christiantietze.WebcamSnapTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WebcamSnap.app/Contents/MacOS/WebcamSnap";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5044C5531ECD68A100F59417 /* Build configuration list for PBXNativeTarget "WebcamSnap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5044C5541ECD68A100F59417 /* Debug */,
+				5044C5551ECD68A100F59417 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5044C5571ECD68A100F59417 /* Build configuration list for PBXNativeTarget "WebcamSnapTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5044C5581ECD68A100F59417 /* Debug */,
+				5044C5591ECD68A100F59417 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		5091E58A1ECC17710069926B /* Build configuration list for PBXProject "WebcamSnap" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -452,20 +642,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5091E5A71ECC17710069926B /* Build configuration list for PBXNativeTarget "WebcamSnap" */ = {
+		5091E5A71ECC17710069926B /* Build configuration list for PBXNativeTarget "WebcamSnap-Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5091E5A81ECC17710069926B /* Debug */,
 				5091E5A91ECC17710069926B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		5091E5AA1ECC17710069926B /* Build configuration list for PBXNativeTarget "WebcamSnapTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				5091E5AB1ECC17710069926B /* Debug */,
-				5091E5AC1ECC17710069926B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

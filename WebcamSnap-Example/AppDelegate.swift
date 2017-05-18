@@ -1,9 +1,7 @@
 //  Copyright © 2017 Christian Tietze. All rights reserved. Distributed under the MIT License.
 
 import Cocoa
-
-// Make Strings throwable
-extension String: Error {}
+import WebcamSnap
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {

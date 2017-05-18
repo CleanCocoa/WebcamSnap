@@ -10,7 +10,9 @@ public enum SnapResult {
 
 public class SnapPicture {
 
-    init() { }
+    public init() {
+        return
+    }
     
     lazy var snapWindowController: SnapWindowController = SnapWindowController()
 
