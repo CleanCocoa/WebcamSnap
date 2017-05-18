@@ -25,12 +25,29 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.snapPicture = SnapPicture()
         self.snapPicture.showSheet(hostingWindow: window) { result in
             switch result {
-            case .cancel: break
-            case .error(let error): print("error taking picture: \(error)")
+            case .cancel:
+                // Ignore canceling
+                break
+
+            case .error(let webcamError as WebcamError)
+                where webcamError == .cameraSetupFailed:
+                self.showWebcamNotFoundAlert()
+
+            case .error(let error):
+                print("error taking picture: \(error)")
+
             case .picture(let image):
                 self.replaceImage(image: image)
             }
         }
+    }
+
+    fileprivate func showWebcamNotFoundAlert() {
+
+        let alert = NSAlert()
+        alert.messageText = "No camera found"
+        alert.addButton(withTitle: "Abort")
+        alert.runModal()
     }
 
     fileprivate func replaceImage(image: NSImage) {

@@ -3,6 +3,30 @@
 import Cocoa
 import AVFoundation
 
+enum CaptureResult {
+    case error(Error)
+    case image(NSImage)
+}
+
+public enum WebcamError: Error, Equatable {
+    case unknown(Error?)
+    case sessionError(Error)
+    case cameraSetupFailed
+}
+
+public func ==(lhs: WebcamError, rhs: WebcamError) -> Bool {
+
+    switch (lhs, rhs) {
+    case (.unknown, .unknown),
+         (.sessionError, .sessionError),
+         (.cameraSetupFailed, .cameraSetupFailed):
+        return true
+
+    default:
+        return false
+    }
+}
+
 class Webcam {
 
     let session: AVCaptureSession
@@ -18,8 +42,17 @@ class Webcam {
         session.addOutput(stillOutput)
 
         let device = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
-        let input = try AVCaptureDeviceInput(device: device)
-        guard session.canAddInput(input) else { throw "Cannot add input" }
+        let input: AVCaptureDeviceInput
+
+        do {
+            input = try AVCaptureDeviceInput(device: device)
+        } catch {
+            throw WebcamError.cameraSetupFailed
+        }
+
+        guard session.canAddInput(input) else {
+            throw WebcamError.sessionError("Cannot add input")
+        }
         session.addInput(input)
 
         self.session = session
@@ -48,22 +81,22 @@ class Webcam {
     }
 
     /// - parameter result: Callback after capturing the image. Dispatched on main queue.
-    func captureImage(result: @escaping (NSImage?, Error?) -> Void) {
+    func captureImage(result: @escaping (CaptureResult) -> Void) {
 
         let connection = stillImageOutput.connection(withMediaType: AVMediaTypeVideo)
         stillImageOutput.captureStillImageAsynchronously(from: connection) { (imageBuffer: CMSampleBuffer?, error: Error?) in
 
             guard let data = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(imageBuffer) else {
-                DispatchQueue.main.async { result(nil, "JPEG data could not be created") }
+                DispatchQueue.main.async { result(.error("JPEG data could not be created")) }
                 return
             }
 
             guard let image = NSImage(data: data) else {
-                DispatchQueue.main.async { result(nil, "NSImage conversion failed") }
+                DispatchQueue.main.async { result(.error("NSImage conversion failed")) }
                 return
             }
 
-            DispatchQueue.main.async { result(image, nil) }
+            DispatchQueue.main.async { result(.image(image)) }
         }
     }
 }

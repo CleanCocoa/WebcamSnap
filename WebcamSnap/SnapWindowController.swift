@@ -71,19 +71,12 @@ class SnapWindowController: NSWindowController {
 
         guard let webcam = self.webcam else { return }
 
-        webcam.captureImage(result: { (image, error) in
+        webcam.captureImage(result: { result in
 
-            if let error = error {
-                self.abort(error: error)
-                return
+            switch result {
+            case .error(let error): self.abort(error: error)
+            case .image(let image): self.finishSnapping(image: image)
             }
-
-            guard let image = image else {
-                self.abort(error: "no image provided")
-                return
-            }
-
-            self.finishSnapping(image: image)
         })
     }
 
@@ -225,7 +218,7 @@ class SnapWindowController: NSWindowController {
         do {
             self.webcam = try Webcam()
         } catch {
-            self.result = .error("Webcam setup failed.")
+            self.result = .error(error)
             closeSheet()
             return
         }
