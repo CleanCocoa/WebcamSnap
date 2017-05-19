@@ -6,6 +6,13 @@ To view Iconic's license, please go to:
 <https://preview.useiconic.com/license/>
 
 
+## SCSelectionBorder
+
+MIT License
+
+Copyright (c) 2017 Vincent Wayne. Distributed under the MIT License. (See below.)
+
+
 ## WebcamSnap
 
 MIT License

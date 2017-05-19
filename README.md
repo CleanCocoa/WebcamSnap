@@ -8,6 +8,10 @@
 
 Sheet to snap and crop images with your webcam or iSight camera.
 
+<div align="center">
+    <img src="assets/screenshot-crop.png" />
+</div>
+
 ## Keyboard Interaction
 
 When cropping is deactivated ...
@@ -28,7 +32,7 @@ Copyright (c) 2017 Christian Tietze. Distributed under the MIT License.
 
 ### SCSelectionBorder
 
-`SCSelectionBorder` is copyright (c) 2011 Vincent S. Wang. All rights reserved.
+`SCSelectionBorder` is copyright (c) 2011--2017 Vincent S. Wang. Distributed under the MIT License.
 
 <https://github.com/smokyonion/SCSelectionBorder>
 
