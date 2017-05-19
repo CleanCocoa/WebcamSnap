@@ -73,6 +73,8 @@ class SnapWindowController: NSWindowController {
 
         webcam.captureImage(result: { result in
 
+            self.webcam?.stop()
+
             switch result {
             case .error(let error): self.abort(error: error)
             case .image(let image): self.finishSnapping(image: image)
