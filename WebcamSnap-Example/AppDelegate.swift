@@ -34,7 +34,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 self.showWebcamNotFoundAlert()
 
             case .error(let error):
-                print("error taking picture: \(error)")
+                print("error taking picture: \(error ?? "unknown error")")
 
             case .picture(let image):
                 self.replaceImage(image: image)
