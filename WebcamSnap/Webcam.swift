@@ -35,13 +35,14 @@ class Webcam {
     init() throws {
 
         let session = AVCaptureSession()
-        session.sessionPreset = AVCaptureSessionPresetMedium
+        session.sessionPreset = .medium
 
         let stillOutput = AVCaptureStillImageOutput()
         stillOutput.outputSettings = [AVVideoCodecKey : AVVideoCodecJPEG]
         session.addOutput(stillOutput)
 
-        let device = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
+        guard let device = AVCaptureDevice.default(for: .video)
+            else { throw WebcamError.cameraSetupFailed }
         let input: AVCaptureDeviceInput
 
         do {
@@ -50,9 +51,8 @@ class Webcam {
             throw WebcamError.cameraSetupFailed
         }
 
-        guard session.canAddInput(input) else {
-            throw WebcamError.sessionError("Cannot add input")
-        }
+        guard session.canAddInput(input)
+            else { throw WebcamError.sessionError("Cannot add input") }
         session.addInput(input)
 
         self.session = session
@@ -73,7 +73,7 @@ class Webcam {
 
     func showPreview(in hostingView: NSView) {
 
-        guard let previewLayer = AVCaptureVideoPreviewLayer(session: session) else { return }
+        let previewLayer = AVCaptureVideoPreviewLayer(session: session)
         previewLayer.frame = hostingView.bounds
 
         hostingView.wantsLayer = true
@@ -83,10 +83,14 @@ class Webcam {
     /// - parameter result: Callback after capturing the image. Dispatched on main queue.
     func captureImage(result: @escaping (CaptureResult) -> Void) {
 
-        let connection = stillImageOutput.connection(withMediaType: AVMediaTypeVideo)
+        guard let connection = stillImageOutput.connection(with: .video) else {
+            result(.error("Cannot capture still image"))
+            return
+        }
         stillImageOutput.captureStillImageAsynchronously(from: connection) { (imageBuffer: CMSampleBuffer?, error: Error?) in
 
-            guard let data = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(imageBuffer) else {
+            guard let imageBuffer = imageBuffer,
+                let data = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(imageBuffer) else {
                 DispatchQueue.main.async { result(.error("JPEG data could not be created")) }
                 return
             }

@@ -5,7 +5,7 @@ import Cocoa
 class SnapWindowController: NSWindowController {
 
     convenience init() {
-        self.init(windowNibName: "SnapWindowController")
+        self.init(windowNibName: NSNib.Name(rawValue: "SnapWindowController"))
     }
 
     var webcam: Webcam?
@@ -134,7 +134,7 @@ class SnapWindowController: NSWindowController {
 
     var isCropping: Bool = false {
         didSet {
-            cropToggleButton.state = isCropping ? NSOnState : NSOffState
+            cropToggleButton.state = isCropping ? .on : .off
             aspectRatioCheckBox.isEnabled = isCropping
             applyCropButton.isEnabled = isCropping
             useImageButton.isEnabled = !isCropping
@@ -151,14 +151,14 @@ class SnapWindowController: NSWindowController {
 
     @IBAction func toggleCrop(_ sender: Any?) {
 
-        isCropping = (cropToggleButton.state == NSOnState)
+        isCropping = (cropToggleButton.state == .on)
         
         makeResultImageViewFirstResponder()
     }
 
     @IBAction func toggleAspectRatio(_ sender: Any?) {
 
-        let lockRatio = (aspectRatioCheckBox.state == NSOnState)
+        let lockRatio = (aspectRatioCheckBox.state == .on)
 
         switch lockRatio {
         case true:
@@ -229,7 +229,7 @@ class SnapWindowController: NSWindowController {
         webcam?.showPreview(in: previewView)
     }
 
-    func closeSheet(returnCode: NSModalResponse = NSModalResponseOK) {
+    func closeSheet(returnCode: NSApplication.ModalResponse = .OK) {
 
         guard let window = self.window else { preconditionFailure("expected window outlet") }
 
