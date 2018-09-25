@@ -5,7 +5,7 @@ import Cocoa
 class SnapWindowController: NSWindowController {
 
     convenience init() {
-        self.init(windowNibName: NSNib.Name(rawValue: "SnapWindowController"))
+        self.init(windowNibName: "SnapWindowController")
     }
 
     var webcam: Webcam?

@@ -168,7 +168,7 @@ public class CroppableImageView: NSImageView {
             // Escape Key
             event.keyCode == 53
             // ⌘.
-            || (event.characters?.characters.first == "."
+            || (event.characters?.first == "."
                 && event.modifierFlags.contains(.command))
             else { return false }
 
@@ -202,7 +202,7 @@ public class CroppableImageView: NSImageView {
 
         guard let cropMarker = self.cropMarker else { return false }
 
-        guard event.characters?.lowercased().characters.first == "a"
+        guard event.characters?.lowercased().first == "a"
             && event.modifierFlags.contains(.command)
             else { return false}
 
