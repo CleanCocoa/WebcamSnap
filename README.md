@@ -1,6 +1,6 @@
 # WebcamSnap
 
-![Swift 3](https://img.shields.io/badge/Swift-3.0-blue.svg?style=flat)
+![Swift 5](https://img.shields.io/badge/Swift-5.0-blue.svg?style=flat)
 ![Version](https://img.shields.io/github/tag/CleanCocoa/WebcamSnap.svg?style=flat)
 ![License](https://img.shields.io/github/license/CleanCocoa/WebcamSnap.svg?style=flat)
 ![Platform](https://img.shields.io/badge/platform-macOS-lightgrey.svg?style=flat)
