@@ -93,64 +93,50 @@ class SnapWindowController: NSWindowController {
     }
 
     private func showImageEditingControls(_ completion: (() -> Void)? = nil) {
-        resultImageView.isEnabled = true
-        resultImageView.isHidden = false
-        editingControlsView.isHidden = false
-
-        NSAnimationContext.runAnimationGroup({ context in
-            context.duration = 0.2
-            context.allowsImplicitAnimation = true
-
-            cancelTakingPictureButton.alphaValue = 0.0
-            takePictureButton.alphaValue = 0.0
-            previewView.alphaValue = 0.0
-            editingControlsView.alphaValue = 1.0
-
-            window?.contentView?.layer?.backgroundColor = NSColor.windowBackgroundColor.cgColor
-        }, completionHandler: {
-            self.takePictureButton.isEnabled = false
-            self.takePictureButton.isHidden = true
-            self.cancelTakingPictureButton.isEnabled = false
-            self.cancelTakingPictureButton.isHidden = true
-
-            self.cropToggleButton.isEnabled = true
-            self.resetCropping()
-            
-            self.useImageButton.isEnabled = true
-            self.retakeImageButton.isEnabled = true
-            self.cancelUsingImageButton.isEnabled = true
-
-            completion?()
-        })
+        change(activeControls: .editing, completion)
     }
 
     private func showWebcamControls(_ completion: (() -> Void)? = nil) {
-        resultImageView.isEnabled = false
-        resultImageView.isHidden = true
-        editingControlsView.isHidden = true
+        change(activeControls: .webcam, completion)
+    }
+
+    enum ControlState { case webcam, editing }
+
+    private func change(activeControls: ControlState, _ completion: (() -> Void)? = nil) {
+        let isWebcamControlEnabled: Bool = (activeControls == .webcam)
+        let isEditingControlEnabled: Bool = (activeControls == .editing)
+        let webcamControlAlpha: CGFloat = isWebcamControlEnabled ? 1 : 0
+        let editingControlAlpha: CGFloat = isEditingControlEnabled ? 1 : 0
+        let backgroundColor: NSColor = isWebcamControlEnabled ? .black : .windowBackgroundColor
+
+        resultImageView.isEnabled = isEditingControlEnabled
+        resultImageView.isHidden = !isEditingControlEnabled
+        editingControlsView.isHidden = !isEditingControlEnabled
 
         NSAnimationContext.runAnimationGroup({ context in
             context.duration = 0.2
             context.allowsImplicitAnimation = true
 
-            cancelTakingPictureButton.alphaValue = 1.0
-            takePictureButton.alphaValue = 1.0
-            previewView.alphaValue = 1.0
-            editingControlsView.alphaValue = 0.0
+            cancelTakingPictureButton.alphaValue = webcamControlAlpha
+            takePictureButton.alphaValue = webcamControlAlpha
+            previewView.alphaValue = webcamControlAlpha
+            editingControlsView.alphaValue = editingControlAlpha
 
-            window?.contentView?.layer?.backgroundColor = NSColor.black.cgColor
+            window?.contentView?.layer?.backgroundColor = backgroundColor.cgColor
         }, completionHandler: {
-            self.takePictureButton.isEnabled = true
-            self.takePictureButton.isHidden = false
-            self.cancelTakingPictureButton.isEnabled = true
-            self.cancelTakingPictureButton.isHidden = false
+            // Picture taking controls are hidden individually
+            self.takePictureButton.isEnabled = isWebcamControlEnabled
+            self.takePictureButton.isHidden = !isWebcamControlEnabled
+            self.cancelTakingPictureButton.isEnabled = isWebcamControlEnabled
+            self.cancelTakingPictureButton.isHidden = !isWebcamControlEnabled
 
-            self.cropToggleButton.isEnabled = false
+            // Crop controls aren't hidden individually, but via their containers.
+            self.cropToggleButton.isEnabled = isEditingControlEnabled
             self.resetCropping()
 
-            self.useImageButton.isEnabled = false
-            self.retakeImageButton.isEnabled = false
-            self.cancelUsingImageButton.isEnabled = false
+            self.useImageButton.isEnabled = isEditingControlEnabled
+            self.retakeImageButton.isEnabled = isEditingControlEnabled
+            self.cancelUsingImageButton.isEnabled = isEditingControlEnabled
 
             completion?()
         })
