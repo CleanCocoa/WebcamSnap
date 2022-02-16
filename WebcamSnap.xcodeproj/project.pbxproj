@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		501BBE5227BCFE38004426EF /* NoClippingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501BBE5127BCFE38004426EF /* NoClippingView.swift */; };
 		5044C5451ECD68A100F59417 /* WebcamSnap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5044C53C1ECD68A000F59417 /* WebcamSnap.framework */; };
 		5044C54C1ECD68A100F59417 /* WebcamSnapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5044C54B1ECD68A100F59417 /* WebcamSnapTests.swift */; };
 		5044C5511ECD68A100F59417 /* WebcamSnap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5044C53C1ECD68A000F59417 /* WebcamSnap.framework */; };
@@ -65,6 +66,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		501BBE5127BCFE38004426EF /* NoClippingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoClippingView.swift; sourceTree = "<group>"; };
 		5044C5351ECD678800F59417 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
 		5044C53C1ECD68A000F59417 /* WebcamSnap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WebcamSnap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5044C53F1ECD68A100F59417 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				5044C55A1ECD68E100F59417 /* SnapWindowController.swift */,
 				5044C55B1ECD68E100F59417 /* SnapWindowController.xib */,
 				5044C55C1ECD68E100F59417 /* Webcam.swift */,
+				501BBE5127BCFE38004426EF /* NoClippingView.swift */,
 			);
 			name = "Snapping Window";
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 				5044C55F1ECD68E100F59417 /* Webcam.swift in Sources */,
 				5044C5641ECD68FC00F59417 /* CroppableImageView.swift in Sources */,
 				5044C55D1ECD68E100F59417 /* SnapWindowController.swift in Sources */,
+				501BBE5227BCFE38004426EF /* NoClippingView.swift in Sources */,
 				5044C5691ECD691000F59417 /* SnapPicture.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
