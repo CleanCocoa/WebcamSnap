@@ -71,9 +71,10 @@ class Webcam {
         if session.isRunning { stop() }
     }
 
-    func showPreview(in hostingView: NSView) {
+    private lazy var previewLayer = AVCaptureVideoPreviewLayer(session: self.session)
 
-        let previewLayer = AVCaptureVideoPreviewLayer(session: session)
+    func showPreview(in hostingView: NSView) {
+        previewLayer.removeFromSuperlayer()
         previewLayer.frame = hostingView.bounds
 
         hostingView.wantsLayer = true

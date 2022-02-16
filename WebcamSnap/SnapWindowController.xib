@@ -17,6 +17,7 @@
                 <outlet property="editingControlsView" destination="Fh4-qn-fyI" id="0KR-PH-1m5"/>
                 <outlet property="previewView" destination="pqd-cQ-u89" id="Kmj-D0-HB0"/>
                 <outlet property="resultImageView" destination="KQD-Sm-iA7" id="VCh-4U-fqB"/>
+                <outlet property="retakeImageButton" destination="Was-YS-hwt" id="pd4-fX-xtV"/>
                 <outlet property="takePictureButton" destination="Qhc-tf-TMV" id="9PZ-xH-XpB"/>
                 <outlet property="useImageButton" destination="Y71-Qd-uUA" id="zpG-4Y-gqR"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
@@ -27,21 +28,21 @@
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="482" height="328"/>
+            <rect key="contentRect" x="196" y="240" width="609" height="328"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2048" height="1127"/>
             <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="482" height="328"/>
+                <rect key="frame" x="0.0" y="0.0" width="609" height="328"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="KQD-Sm-iA7" customClass="CroppableImageView" customModule="WebcamSnap" customModuleProvider="target">
-                        <rect key="frame" x="-1" y="38" width="482" height="291"/>
+                        <rect key="frame" x="-1" y="38" width="609" height="291"/>
                         <imageCell key="cell" enabled="NO" alignment="left" imageScaling="proportionallyUpOrDown" id="r6J-sR-YvP"/>
                     </imageView>
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="pqd-cQ-u89">
-                        <rect key="frame" x="0.0" y="38" width="482" height="290"/>
+                        <rect key="frame" x="0.0" y="38" width="609" height="290"/>
                     </customView>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OV8-1H-ktL">
-                        <rect key="frame" x="114" y="21" width="76" height="32"/>
+                        <rect key="frame" x="178" y="21" width="76" height="32"/>
                         <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cmE-WO-VvG">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -54,7 +55,7 @@ Gw
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Qhc-tf-TMV">
-                        <rect key="frame" x="186" y="21" width="110" height="32"/>
+                        <rect key="frame" x="250" y="21" width="110" height="32"/>
                         <buttonCell key="cell" type="push" title="Take Picture" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ypd-Rw-mHw">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -67,7 +68,7 @@ DQ
                         </connections>
                     </button>
                     <customView hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fh4-qn-fyI" userLabel="Editing Controls" customClass="NoClippingView" customModule="WebcamSnap" customModuleProvider="target">
-                        <rect key="frame" x="8" y="8" width="466" height="22"/>
+                        <rect key="frame" x="8" y="8" width="593" height="22"/>
                         <subviews>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cJN-Qr-4c3" userLabel="Crop Button">
                                 <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
@@ -117,7 +118,7 @@ DQ
                                 </constraints>
                             </customView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Y71-Qd-uUA">
-                                <rect key="frame" x="373" y="-10" width="100" height="40"/>
+                                <rect key="frame" x="500" y="-6" width="100" height="32"/>
                                 <buttonCell key="cell" type="push" title="Use Image" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gij-si-JE7">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -129,8 +130,18 @@ DQ
                                     <action selector="useImage:" target="-2" id="RTY-1b-2Aw"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Was-YS-hwt">
+                                <rect key="frame" x="426" y="-6" width="76" height="32"/>
+                                <buttonCell key="cell" type="push" title="Retake" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dXb-CM-95V">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="retakeImage:" target="-2" id="plI-sN-HkJ"/>
+                                </connections>
+                            </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cNC-ih-PEj">
-                                <rect key="frame" x="299" y="-10" width="76" height="40"/>
+                                <rect key="frame" x="352" y="-6" width="76" height="32"/>
                                 <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="leI-vb-d2t">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -144,9 +155,11 @@ Gw
                             </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="Y71-Qd-uUA" firstAttribute="baseline" secondItem="cJN-Qr-4c3" secondAttribute="baseline" id="8uz-JT-Eoj"/>
+                            <constraint firstItem="Y71-Qd-uUA" firstAttribute="leading" secondItem="Was-YS-hwt" secondAttribute="trailing" constant="12" symbolic="YES" id="06K-hD-JA9"/>
+                            <constraint firstItem="Y71-Qd-uUA" firstAttribute="firstBaseline" secondItem="Cnk-AA-fis" secondAttribute="firstBaseline" id="3aw-KZ-lhU"/>
                             <constraint firstItem="cJN-Qr-4c3" firstAttribute="leading" secondItem="Fh4-qn-fyI" secondAttribute="leading" id="GgK-Lo-cRe"/>
                             <constraint firstItem="aqT-27-C1a" firstAttribute="centerY" secondItem="cJN-Qr-4c3" secondAttribute="centerY" id="MlH-Lu-H4p"/>
+                            <constraint firstItem="Was-YS-hwt" firstAttribute="leading" secondItem="cNC-ih-PEj" secondAttribute="trailing" constant="12" symbolic="YES" id="OOM-sM-3eP"/>
                             <constraint firstAttribute="trailing" secondItem="Y71-Qd-uUA" secondAttribute="trailing" id="UFS-oW-pi0"/>
                             <constraint firstItem="ChZ-QX-fkq" firstAttribute="leading" secondItem="cJN-Qr-4c3" secondAttribute="trailing" constant="8" id="UFn-EO-f1D"/>
                             <constraint firstItem="cNC-ih-PEj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Cnk-AA-fis" secondAttribute="trailing" constant="30" id="a9O-11-sQr"/>
@@ -155,9 +168,8 @@ Gw
                             <constraint firstItem="cNC-ih-PEj" firstAttribute="firstBaseline" secondItem="Y71-Qd-uUA" secondAttribute="firstBaseline" id="ibY-eT-uGm"/>
                             <constraint firstItem="ChZ-QX-fkq" firstAttribute="top" secondItem="Fh4-qn-fyI" secondAttribute="top" id="mcl-vN-WMl"/>
                             <constraint firstItem="cJN-Qr-4c3" firstAttribute="top" secondItem="Fh4-qn-fyI" secondAttribute="top" id="nyn-5T-E6c"/>
-                            <constraint firstItem="Y71-Qd-uUA" firstAttribute="leading" secondItem="cNC-ih-PEj" secondAttribute="trailing" constant="12" id="tGx-EZ-agB"/>
+                            <constraint firstItem="Y71-Qd-uUA" firstAttribute="firstBaseline" secondItem="Was-YS-hwt" secondAttribute="firstBaseline" id="tCL-2J-UGh"/>
                             <constraint firstItem="Y71-Qd-uUA" firstAttribute="centerY" secondItem="Fh4-qn-fyI" secondAttribute="centerY" id="wWw-Th-9ix"/>
-                            <constraint firstItem="cNC-ih-PEj" firstAttribute="baseline" secondItem="Y71-Qd-uUA" secondAttribute="baseline" id="xQh-e3-2cw"/>
                         </constraints>
                     </customView>
                 </subviews>
@@ -182,7 +194,7 @@ Gw
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="143" y="191"/>
+            <point key="canvasLocation" x="200.5" y="191"/>
         </window>
     </objects>
     <resources>

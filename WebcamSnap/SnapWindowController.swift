@@ -23,6 +23,7 @@ class SnapWindowController: NSWindowController {
     @IBOutlet weak var applyCropButton: NSButton!
 
     @IBOutlet weak var useImageButton: NSButton!
+    @IBOutlet weak var retakeImageButton: NSButton!
     @IBOutlet weak var cancelUsingImageButton: NSButton!
     
 
@@ -45,6 +46,7 @@ class SnapWindowController: NSWindowController {
         applyCropButton.isEnabled = false
 
         cancelUsingImageButton.isEnabled = false
+        retakeImageButton.isEnabled = false
         useImageButton.isEnabled = false
 
         resultImageView.abortCropping = { [weak self] in
@@ -85,8 +87,12 @@ class SnapWindowController: NSWindowController {
     func finishSnapping(image: NSImage) {
 
         result = .picture(image)
-
         resultImageView.image = image
+        showImageEditingControls()
+        makeResultImageViewFirstResponder()
+    }
+
+    private func showImageEditingControls(_ completion: (() -> Void)? = nil) {
         resultImageView.isEnabled = true
         resultImageView.isHidden = false
         editingControlsView.isHidden = false
@@ -111,10 +117,43 @@ class SnapWindowController: NSWindowController {
             self.resetCropping()
             
             self.useImageButton.isEnabled = true
+            self.retakeImageButton.isEnabled = true
             self.cancelUsingImageButton.isEnabled = true
-        })
 
-        makeResultImageViewFirstResponder()
+            completion?()
+        })
+    }
+
+    private func showWebcamControls(_ completion: (() -> Void)? = nil) {
+        resultImageView.isEnabled = false
+        resultImageView.isHidden = true
+        editingControlsView.isHidden = true
+
+        NSAnimationContext.runAnimationGroup({ context in
+            context.duration = 0.2
+            context.allowsImplicitAnimation = true
+
+            cancelTakingPictureButton.alphaValue = 1.0
+            takePictureButton.alphaValue = 1.0
+            previewView.alphaValue = 1.0
+            editingControlsView.alphaValue = 0.0
+
+            window?.contentView?.layer?.backgroundColor = NSColor.black.cgColor
+        }, completionHandler: {
+            self.takePictureButton.isEnabled = true
+            self.takePictureButton.isHidden = false
+            self.cancelTakingPictureButton.isEnabled = true
+            self.cancelTakingPictureButton.isHidden = false
+
+            self.cropToggleButton.isEnabled = false
+            self.resetCropping()
+
+            self.useImageButton.isEnabled = false
+            self.retakeImageButton.isEnabled = false
+            self.cancelUsingImageButton.isEnabled = false
+
+            completion?()
+        })
     }
 
     func abort(error: Error) {
@@ -189,7 +228,16 @@ class SnapWindowController: NSWindowController {
         resultImageView.cropSelection(sender)
     }
 
+    @IBAction func retakeImage(_ sender: Any) {
+
+        result = nil
+        showWebcamControls() {
+            self.startWebcam()
+        }
+    }
+
     @IBAction func useImage(_ sender: Any) {
+
         closeSheet()
     }
 
@@ -213,7 +261,7 @@ class SnapWindowController: NSWindowController {
 
         hostingWindow.beginSheet(window) { _ in
 
-            let result = self.result ?? .error("No result.")
+            let result = self.result ?? .error("No picture result saved.")
             completion(result)
         }
 
@@ -225,6 +273,10 @@ class SnapWindowController: NSWindowController {
             return
         }
 
+        startWebcam()
+    }
+
+    private func startWebcam() {
         webcam?.start()
         webcam?.showPreview(in: previewView)
     }
