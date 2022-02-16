@@ -72,13 +72,17 @@ class Webcam {
     }
 
     private lazy var previewLayer = AVCaptureVideoPreviewLayer(session: self.session)
+    private var previewLayerBoundsObserver:  NSKeyValueObservation?
 
     func showPreview(in hostingView: NSView) {
         previewLayer.removeFromSuperlayer()
-        previewLayer.frame = hostingView.bounds
 
         hostingView.wantsLayer = true
         hostingView.layer?.addSublayer(previewLayer)
+
+        previewLayerBoundsObserver = hostingView.observe(\.frame, options: [.initial, .new]) { [previewLayer] hostingView, _ in
+            previewLayer.frame = hostingView.bounds
+        }
     }
 
     /// - parameter result: Callback after capturing the image. Dispatched on main queue.
