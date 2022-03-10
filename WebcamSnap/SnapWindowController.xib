@@ -16,6 +16,7 @@
                 <outlet property="cropToggleButton" destination="cJN-Qr-4c3" id="3yc-xP-6VV"/>
                 <outlet property="editingControlsView" destination="Fh4-qn-fyI" id="0KR-PH-1m5"/>
                 <outlet property="previewView" destination="pqd-cQ-u89" id="Kmj-D0-HB0"/>
+                <outlet property="resultImageContainerView" destination="zHj-W2-zJ8" id="dpS-Hp-nag"/>
                 <outlet property="resultImageView" destination="KQD-Sm-iA7" id="VCh-4U-fqB"/>
                 <outlet property="retakeImageButton" destination="Was-YS-hwt" id="pd4-fX-xtV"/>
                 <outlet property="takePictureButton" destination="Qhc-tf-TMV" id="9PZ-xH-XpB"/>
@@ -29,45 +30,30 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="666" height="444"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2048" height="1127"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="3440" height="1415"/>
             <value key="minSize" type="size" width="500" height="300"/>
             <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="666" height="444"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="KQD-Sm-iA7" customClass="CroppableImageView" customModule="WebcamSnap" customModuleProvider="target">
-                        <rect key="frame" x="-1" y="38" width="666" height="407"/>
-                        <imageCell key="cell" enabled="NO" alignment="left" imageScaling="proportionallyUpOrDown" id="r6J-sR-YvP"/>
-                    </imageView>
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="zHj-W2-zJ8" userLabel="Image Container">
+                        <rect key="frame" x="-1" y="38" width="667" height="407"/>
+                        <subviews>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="KQD-Sm-iA7" customClass="CroppableImageView" customModule="WebcamSnap" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="667" height="407"/>
+                                <imageCell key="cell" enabled="NO" alignment="left" imageScaling="proportionallyUpOrDown" id="r6J-sR-YvP"/>
+                            </imageView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="KQD-Sm-iA7" secondAttribute="bottom" id="0vh-NF-Is2"/>
+                            <constraint firstItem="KQD-Sm-iA7" firstAttribute="top" secondItem="zHj-W2-zJ8" secondAttribute="top" id="81J-bc-F4u"/>
+                            <constraint firstItem="KQD-Sm-iA7" firstAttribute="leading" secondItem="zHj-W2-zJ8" secondAttribute="leading" id="JgW-UO-5Nt"/>
+                            <constraint firstAttribute="trailing" secondItem="KQD-Sm-iA7" secondAttribute="trailing" id="Reo-yP-b2E"/>
+                        </constraints>
+                    </customView>
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="pqd-cQ-u89" userLabel="Preview Container">
                         <rect key="frame" x="0.0" y="38" width="666" height="406"/>
                     </customView>
-                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OV8-1H-ktL">
-                        <rect key="frame" x="206" y="21" width="76" height="32"/>
-                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cmE-WO-VvG">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                            <string key="keyEquivalent" base64-UTF8="YES">
-Gw
-</string>
-                        </buttonCell>
-                        <connections>
-                            <action selector="cancelOperation:" target="-2" id="WII-ja-eG7"/>
-                        </connections>
-                    </button>
-                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Qhc-tf-TMV">
-                        <rect key="frame" x="278" y="21" width="110" height="32"/>
-                        <buttonCell key="cell" type="push" title="Take Picture" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ypd-Rw-mHw">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                            <string key="keyEquivalent" base64-UTF8="YES">
-DQ
-</string>
-                        </buttonCell>
-                        <connections>
-                            <action selector="snap:" target="-2" id="frE-4s-t7e"/>
-                        </connections>
-                    </button>
                     <customView hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fh4-qn-fyI" userLabel="Editing Controls" customClass="NoClippingView" customModule="WebcamSnap" customModuleProvider="target">
                         <rect key="frame" x="8" y="8" width="650" height="22"/>
                         <subviews>
@@ -173,23 +159,65 @@ Gw
                             <constraint firstItem="Y71-Qd-uUA" firstAttribute="centerY" secondItem="Fh4-qn-fyI" secondAttribute="centerY" id="wWw-Th-9ix"/>
                         </constraints>
                     </customView>
+                    <customView appearanceType="darkAqua" translatesAutoresizingMaskIntoConstraints="NO" id="RnQ-E2-8Zy" userLabel="Take Picture Controls">
+                        <rect key="frame" x="232" y="12" width="130" height="37"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OV8-1H-ktL">
+                                <rect key="frame" x="-7" y="2" width="76" height="32"/>
+                                <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cmE-WO-VvG">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="cancelOperation:" target="-2" id="WII-ja-eG7"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Qhc-tf-TMV">
+                                <rect key="frame" x="69" y="-4" width="64" height="44"/>
+                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" alignment="center" controlSize="large" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ypd-Rw-mHw">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <string key="title">Take
+Picture</string>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                                </buttonCell>
+                                <color key="bezelColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
+                                <color key="contentTintColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
+                                <connections>
+                                    <action selector="snap:" target="-2" id="frE-4s-t7e"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="OV8-1H-ktL" firstAttribute="leading" secondItem="RnQ-E2-8Zy" secondAttribute="leading" id="0mA-29-nYS"/>
+                            <constraint firstItem="OV8-1H-ktL" firstAttribute="centerY" secondItem="Qhc-tf-TMV" secondAttribute="centerY" id="Fg8-XO-Z4i"/>
+                            <constraint firstItem="Qhc-tf-TMV" firstAttribute="top" secondItem="RnQ-E2-8Zy" secondAttribute="top" id="Lgy-xL-OOw"/>
+                            <constraint firstItem="Qhc-tf-TMV" firstAttribute="leading" secondItem="OV8-1H-ktL" secondAttribute="trailing" constant="10" id="gKv-xw-res"/>
+                            <constraint firstAttribute="bottom" secondItem="Qhc-tf-TMV" secondAttribute="bottom" id="jg7-wQ-1cI"/>
+                            <constraint firstAttribute="trailing" secondItem="Qhc-tf-TMV" secondAttribute="trailing" id="lBD-KN-mrj"/>
+                            <constraint firstAttribute="bottom" secondItem="Qhc-tf-TMV" secondAttribute="bottom" id="zv1-Ii-3Ax"/>
+                        </constraints>
+                    </customView>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="zHj-W2-zJ8" firstAttribute="trailing" secondItem="pqd-cQ-u89" secondAttribute="trailing" id="0ML-dj-TVa"/>
                     <constraint firstItem="pqd-cQ-u89" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" id="0UK-TO-ZfK"/>
                     <constraint firstItem="Fh4-qn-fyI" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="8" id="DhH-yz-ZMV"/>
                     <constraint firstItem="pqd-cQ-u89" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" id="FCx-QO-n6w"/>
-                    <constraint firstItem="KQD-Sm-iA7" firstAttribute="top" secondItem="pqd-cQ-u89" secondAttribute="top" constant="-1" id="HxB-5d-G2d"/>
                     <constraint firstItem="Fh4-qn-fyI" firstAttribute="top" secondItem="pqd-cQ-u89" secondAttribute="bottom" constant="8" id="J1J-q0-7fq"/>
                     <constraint firstAttribute="bottom" secondItem="Fh4-qn-fyI" secondAttribute="bottom" constant="8" id="KG8-l3-pAd"/>
                     <constraint firstAttribute="trailing" secondItem="pqd-cQ-u89" secondAttribute="trailing" id="MSr-P7-Etb"/>
-                    <constraint firstItem="KQD-Sm-iA7" firstAttribute="bottom" secondItem="pqd-cQ-u89" secondAttribute="bottom" id="Wmu-jF-spm"/>
-                    <constraint firstItem="Qhc-tf-TMV" firstAttribute="bottom" secondItem="pqd-cQ-u89" secondAttribute="bottom" constant="10" id="Wnd-0e-45j"/>
-                    <constraint firstItem="Qhc-tf-TMV" firstAttribute="leading" secondItem="OV8-1H-ktL" secondAttribute="trailing" constant="10" id="YVg-Oy-wUm"/>
-                    <constraint firstItem="OV8-1H-ktL" firstAttribute="baseline" secondItem="Qhc-tf-TMV" secondAttribute="baseline" id="idr-Ah-DSA"/>
-                    <constraint firstItem="Qhc-tf-TMV" firstAttribute="centerX" secondItem="pqd-cQ-u89" secondAttribute="centerX" id="k5F-ZO-aj1"/>
+                    <constraint firstItem="zHj-W2-zJ8" firstAttribute="leading" secondItem="pqd-cQ-u89" secondAttribute="leading" constant="-1" id="QXo-dj-Is2"/>
+                    <constraint firstItem="Qhc-tf-TMV" firstAttribute="centerX" secondItem="se5-gp-TjO" secondAttribute="centerX" id="T4q-DM-8wM"/>
+                    <constraint firstAttribute="bottom" secondItem="RnQ-E2-8Zy" secondAttribute="bottom" constant="12" id="iGA-9b-KKK"/>
                     <constraint firstAttribute="trailing" secondItem="Fh4-qn-fyI" secondAttribute="trailing" constant="8" id="oIG-aU-yEW"/>
-                    <constraint firstItem="KQD-Sm-iA7" firstAttribute="trailing" secondItem="pqd-cQ-u89" secondAttribute="trailing" constant="-1" id="xbF-dX-U1A"/>
-                    <constraint firstItem="KQD-Sm-iA7" firstAttribute="leading" secondItem="pqd-cQ-u89" secondAttribute="leading" constant="-1" id="xxZ-wY-zf9"/>
+                    <constraint firstItem="zHj-W2-zJ8" firstAttribute="bottom" secondItem="pqd-cQ-u89" secondAttribute="bottom" id="rqm-HI-frr"/>
+                    <constraint firstItem="zHj-W2-zJ8" firstAttribute="top" secondItem="pqd-cQ-u89" secondAttribute="top" constant="-1" id="z1D-5b-Qr5"/>
                 </constraints>
             </view>
             <connections>

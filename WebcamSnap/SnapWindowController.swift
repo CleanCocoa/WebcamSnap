@@ -13,7 +13,7 @@ class SnapWindowController: NSWindowController {
     @IBOutlet weak var cancelTakingPictureButton: NSButton!
     @IBOutlet weak var previewView: NSView!
 
-
+    @IBOutlet weak var resultImageContainerView: NSView!
     @IBOutlet weak var resultImageView: CroppableImageView!
     @IBOutlet weak var editingControlsView: NSView!
 
@@ -36,6 +36,8 @@ class SnapWindowController: NSWindowController {
 
         previewView.wantsLayer = true
         previewView.layer?.backgroundColor = NSColor.black.cgColor
+
+        resultImageContainerView.wantsLayer = true
 
         resultImageView.isEnabled = false
         resultImageView.isHidden = true
@@ -105,9 +107,12 @@ class SnapWindowController: NSWindowController {
     private func change(activeControls: ControlState, _ completion: (() -> Void)? = nil) {
         let isWebcamControlEnabled: Bool = (activeControls == .webcam)
         let isEditingControlEnabled: Bool = (activeControls == .editing)
+
         let webcamControlAlpha: CGFloat = isWebcamControlEnabled ? 1 : 0
+        let windowBackgroundColor: NSColor = isWebcamControlEnabled ? .black : .windowBackgroundColor
+
         let editingControlAlpha: CGFloat = isEditingControlEnabled ? 1 : 0
-        let backgroundColor: NSColor = isWebcamControlEnabled ? .black : .windowBackgroundColor
+        let imageBackgroundColor: NSColor = isEditingControlEnabled ? .underPageBackgroundColor : .clear
 
         resultImageView.isEnabled = isEditingControlEnabled
         resultImageView.isHidden = !isEditingControlEnabled
@@ -122,7 +127,9 @@ class SnapWindowController: NSWindowController {
             previewView.alphaValue = webcamControlAlpha
             editingControlsView.alphaValue = editingControlAlpha
 
-            window?.contentView?.layer?.backgroundColor = backgroundColor.cgColor
+            window?.contentView?.layer?.backgroundColor = windowBackgroundColor.cgColor
+            resultImageContainerView.layer?.backgroundColor = imageBackgroundColor.cgColor
+            
         }, completionHandler: {
             // Picture taking controls are hidden individually
             self.takePictureButton.isEnabled = isWebcamControlEnabled
