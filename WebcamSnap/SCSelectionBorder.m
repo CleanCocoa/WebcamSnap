@@ -327,8 +327,8 @@ const CGFloat SCSelectionBorderHandleHalfWidth = 10.0f / 2.0f;
     self.drawingHandles = NO;
 
     // Keep tracking next mouse event till mouse up
-    while (theEvent.type != NSLeftMouseUp) {
-        theEvent = [view.window nextEventMatchingMask:(NSLeftMouseDraggedMask | NSLeftMouseUpMask)];
+    while (theEvent.type != NSEventTypeLeftMouseUp) {
+        theEvent = [view.window nextEventMatchingMask:(NSEventMaskLeftMouseDragged | NSEventMaskLeftMouseUp)];
         NSPoint currentPoint = [view convertPoint:theEvent.locationInWindow fromView:nil];
 
         if (!NSEqualPoints(where, currentPoint)) {
@@ -470,8 +470,8 @@ const CGFloat SCSelectionBorderHandleHalfWidth = 10.0f / 2.0f;
 - (void)resizeWithEvent:(NSEvent *)theEvent byHandle:(SCSelectionBorderHandle)handle atPoint:(NSPoint)where inView:(NSView *)view
 {
     // continuously tracking mouse event and resizing while left mouse button is not up
-    while (theEvent.type != NSLeftMouseUp) {
-        theEvent = [view.window nextEventMatchingMask:(NSLeftMouseDraggedMask | NSLeftMouseUpMask)];
+    while (theEvent.type != NSEventTypeLeftMouseUp) {
+        theEvent = [view.window nextEventMatchingMask:(NSEventMaskLeftMouseDragged | NSEventMaskLeftMouseUp)];
         NSPoint currentPoint = [view convertPoint:theEvent.locationInWindow fromView:nil];
 
         // Start resizing and tracking if the selection border is flipping vertically or horizontally

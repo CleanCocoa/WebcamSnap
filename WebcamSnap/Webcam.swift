@@ -38,7 +38,7 @@ class Webcam {
         session.sessionPreset = .medium
 
         let stillOutput = AVCaptureStillImageOutput()
-        stillOutput.outputSettings = [AVVideoCodecKey : AVVideoCodecJPEG]
+        stillOutput.outputSettings = [AVVideoCodecKey : AVVideoCodecType.jpeg]
         session.addOutput(stillOutput)
 
         guard let device = AVCaptureDevice.default(for: .video)
